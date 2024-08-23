@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/Reactjs_Project/static/css/main.1b6a8025.css",
+    "main.js": "/Reactjs_Project/static/js/main.c52db820.js",
+    "static/js/787.32d91862.chunk.js": "/Reactjs_Project/static/js/787.32d91862.chunk.js",
+    "static/media/p4.png": "/Reactjs_Project/static/media/p4.e93030d99fad5853a82e.png",
+    "static/media/c1.jpg": "/Reactjs_Project/static/media/c1.4521f80ecf77543a2186.jpg",
+    "static/media/a6.jpg": "/Reactjs_Project/static/media/a6.14bf19e0886854cbf761.jpg",
+    "static/media/a9.jpg": "/Reactjs_Project/static/media/a9.85dec420e145e7fc2991.jpg",
+    "static/media/cv.jpg": "/Reactjs_Project/static/media/cv.27f4325dbe98fa0201ea.jpg",
+    "static/media/a3.jpg": "/Reactjs_Project/static/media/a3.6c8b06dbbf9598d43b0a.jpg",
+    "static/media/a11.jpg": "/Reactjs_Project/static/media/a11.579c6d3342aa15033f7d.jpg",
+    "static/media/a4.jpg": "/Reactjs_Project/static/media/a4.9312461ff67e5e2ecc08.jpg",
+    "static/media/a8.jpg": "/Reactjs_Project/static/media/a8.909bd319ecee52dcb7e6.jpg",
+    "static/media/a5.jpg": "/Reactjs_Project/static/media/a5.e4f5cc574b143156b977.jpg",
+    "static/media/b3.jpg": "/Reactjs_Project/static/media/b3.4dc186fdc9f7778c1d20.jpg",
+    "static/media/a7.jpg": "/Reactjs_Project/static/media/a7.127b9a2e8f6f09019777.jpg",
+    "static/media/b2.jpg": "/Reactjs_Project/static/media/b2.1cbe19beff69b6b884e9.jpg",
+    "static/media/a10.jpg": "/Reactjs_Project/static/media/a10.1b6dbad55e5e9e43724b.jpg",
+    "static/media/a2.jpg": "/Reactjs_Project/static/media/a2.e21819be6d7495562ecf.jpg",
+    "static/media/a12.jpg": "/Reactjs_Project/static/media/a12.8fea73a67217c83f7611.jpg",
+    "static/media/hero.jpg": "/Reactjs_Project/static/media/hero.e993df48260f9d86f50d.jpg",
+    "static/media/b4.jpg": "/Reactjs_Project/static/media/b4.4c600ad08c9b68210768.jpg",
+    "static/media/c3.jpg": "/Reactjs_Project/static/media/c3.bc2520eb3b7b87e162a0.jpg",
+    "static/media/c2.jpg": "/Reactjs_Project/static/media/c2.93ad8c7e07ea13f8f87d.jpg",
+    "static/media/c4.jpg": "/Reactjs_Project/static/media/c4.5eb6e9ca5da12fdbcb40.jpg",
+    "static/media/a1.jpg": "/Reactjs_Project/static/media/a1.e6ff36578ada2babc2d4.jpg",
+    "static/media/p3.png": "/Reactjs_Project/static/media/p3.1f2b7d3425ebfeb41404.png",
+    "static/media/p1.png": "/Reactjs_Project/static/media/p1.09a1639858a82fba68ed.png",
+    "static/media/b1.jpg": "/Reactjs_Project/static/media/b1.aa8dbfa02df4c71875e3.jpg",
+    "static/media/p2.png": "/Reactjs_Project/static/media/p2.5fbf26b6c03caf0301c6.png",
+    "static/media/logo.png": "/Reactjs_Project/static/media/logo.53b05aa70d0f96b84582.png",
+    "static/media/back.png": "/Reactjs_Project/static/media/back.ddc330d7653fab593cd6.png",
+    "index.html": "/Reactjs_Project/index.html",
+    "main.1b6a8025.css.map": "/Reactjs_Project/static/css/main.1b6a8025.css.map",
+    "main.c52db820.js.map": "/Reactjs_Project/static/js/main.c52db820.js.map",
+    "787.32d91862.chunk.js.map": "/Reactjs_Project/static/js/787.32d91862.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b6a8025.css",
+    "static/js/main.c52db820.js"
+  ]
+}
