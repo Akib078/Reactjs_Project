@@ -1,7 +1,7 @@
 import React from "react"
 import "./home.css"
 import hero from "../pic/hero.jpg"
-import cv from "../pic/cv.jpg"
+import Cv from "../pic/Cv.jpg"
 import back from "../pic/back.png"
 import { Typewriter, useTypewriter } from "react-simple-typewriter"
 import Aos from 'aos'
@@ -25,7 +25,7 @@ const Home = () => {
       <p data-aos="fade-up" data-aos-duration="2000">
         Welcome to my personal portfolio. Hope you will like it!
       </p>
-      <a href={cv} download className="button" data-aos="fade-up" data-aos-duration="2500">My Resume</a>
+      <a href={Cv} download className="button" data-aos="fade-up" data-aos-duration="2500">My Resume</a>
     </div>
   </div>
 </main>
