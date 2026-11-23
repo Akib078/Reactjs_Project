@@ -159,7 +159,7 @@ const Record = () => {
               data-aos-duration="900"
               data-aos-delay={i * 120}
             >
-              <CardFx seed={i + 5} count={7} />
+              <Bubbles reverse={i % 2 === 1} />
               <div className="about-card__body">
               <span className="edu__date">
                 <span className="dot" aria-hidden="true" />
