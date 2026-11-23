@@ -123,75 +123,6 @@
   z-index: 2;
 }
 
-/* colour shades: yellow glows top-left and top-right over a near-black gradient, slowly shifting */
-.fx__gradient {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(circle at top left, rgba(245, 193, 4, 0.13), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(255, 170, 0, 0.08), transparent 42%),
-    linear-gradient(160deg, #050507 0%, #0a0a11 45%, #0f0c06 100%);
-  background-size: 200% 200%;
-  animation: fx-shift 16s ease-in-out infinite;
-}
-.fx__orb {
-  position: absolute;
-  z-index: 0;
-  border-radius: 50%;
-  filter: blur(48px);
-  animation: fx-float 8s ease-in-out infinite;
-}
-.fx__orb--a {
-  width: 22rem;
-  height: 22rem;
-  top: -6rem;
-  right: -6rem;
-  background: rgba(245, 193, 4, 0.11);
-}
-.fx__orb--b {
-  width: 16rem;
-  height: 16rem;
-  bottom: -6rem;
-  left: -4rem;
-  background: rgba(255, 140, 0, 0.06);
-  animation-delay: -4s;
-}
-
-/* small glowing dots rising through the card */
-.fx__particles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-.fx__particle {
-  position: absolute;
-  bottom: -0.5rem;
-  width: var(--size, 4px);
-  height: var(--size, 4px);
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #fff1a8, #f5c104 60%, transparent);
-  box-shadow: 0 0 10px 1px rgba(245, 193, 4, 0.55);
-  opacity: 0;
-  animation: fx-rise var(--dur, 12s) linear infinite;
-  animation-delay: var(--delay, 0s);
-}
-
-@keyframes fx-shift {
-  0%, 100% { background-position: 0 50%; }
-  50% { background-position: 100% 50%; }
-}
-@keyframes fx-float {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -10px, 0); }
-}
-@keyframes fx-rise {
-  0% { transform: translate3d(0, 0, 0); opacity: 0; }
-  12% { opacity: var(--alpha, 0.7); }
-  82% { opacity: var(--alpha, 0.7); }
-  100% { transform: translate3d(var(--drift, 12px), -420px, 0); opacity: 0; }
-}
-
 /* ---------- experience timeline ---------- */
 .xp {
   position: relative;
@@ -443,13 +374,6 @@
 @media (prefers-reduced-motion: reduce) {
   .about-card {
     transition: none;
-  }
-  .fx__gradient,
-  .fx__orb {
-    animation: none;
-  }
-  .fx__particle {
-    display: none;
   }
   .pill__pulse {
     animation: none;
