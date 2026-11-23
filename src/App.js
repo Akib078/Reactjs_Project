@@ -6,7 +6,6 @@ import Record from './components/record/Record';
 import Service from './components/service/Service';
 import Footer from './components/footer/Footer';
 import Contact from './components/contact/Contact';
-import Portfolios from './components/portfolios/Portfolios';
 import Project from './components/project/Project';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
       <Record></Record>
       <Service></Service>
       <Project></Project>
-      <Portfolios></Portfolios>
      
       <Contact></Contact>
       <Footer></Footer>
