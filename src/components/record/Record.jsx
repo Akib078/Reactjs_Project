@@ -112,7 +112,6 @@ const Record = () => {
             <li className="xp__item" key={job.role} data-aos="fade-up" data-aos-duration="900">
               <span className={`xp__dot${job.current ? " xp__dot--live" : ""}`} aria-hidden="true" />
               <article className="about-card xp__card">
-                <CardFx seed={idx} count={10} />
                 <Bubbles reverse={idx % 2 === 1} />
                 <div className="about-card__body">
                 <div className="xp__top">
@@ -159,7 +158,7 @@ const Record = () => {
               data-aos-duration="900"
               data-aos-delay={i * 120}
             >
-              <Bubbles reverse={i % 2 === 1} />
+              <CardFx seed={i + 5} count={7} />
               <div className="about-card__body">
               <span className="edu__date">
                 <span className="dot" aria-hidden="true" />
