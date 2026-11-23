@@ -12,6 +12,10 @@ import {
 } from "react-icons/si";
 import { TbChartHistogram, TbFileExcel, TbSql, TbArrowUpRight } from "react-icons/tb";
 
+import Aos from "aos";
+import "aos/dist/aos.css";
+Aos.init();
+
 // Tool logos (brand colours) shown on the project cards
 const T = {
   confluence: { name: "Confluence", Icon: SiConfluence, color: "#2684FF" },
@@ -25,9 +29,6 @@ const T = {
   sql: { name: "SQL", Icon: TbSql, color: "#4FA3E0" },
   docs: { name: "Google Docs", Icon: SiGoogledocs, color: "#4285F4" },
 };
-import Aos from "aos";
-import "aos/dist/aos.css";
-Aos.init();
 
 // Projects from Akib_Rahman_Resume.pdf (links taken from the resume)
 const PROJECTS = [
