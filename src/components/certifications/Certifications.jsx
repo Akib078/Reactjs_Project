@@ -26,9 +26,7 @@ const CERTS = [
       { Icon: TbCalendar, label: "Issued", value: "2 Jan 2026" },
       { Icon: TbHash, label: "Certificate code", value: "10179668" },
     ],
-    summary:
-      "Online course covering business and software analysis, advanced Excel and Power BI fundamentals, from gathering requirements to building reports.",
-    topics: ["Business Analysis", "Software Analysis", "Advanced Excel", "Power BI"],
+    topics: ["Business Analysis", "Advanced Excel", "Power BI"],
     link: "https://drive.google.com/file/d/1tX1fDA03VuNMm-JyKBqgmQ4RAeuHjLPS/view?usp=sharing",
   },
   {
@@ -40,9 +38,7 @@ const CERTS = [
       { Icon: TbHash, label: "Certificate no.", value: "ITB-B28-4920" },
       { Icon: TbUser, label: "Trainer", value: "Sabiul Islam Rashed" },
     ],
-    summary:
-      "Recognised for stellar performance in hands-on training on software, API, automation and database testing and bug reporting, led by industry professionals.",
-    topics: ["Software Testing", "API Testing", "Automation", "Database Testing", "Bug Reporting"],
+    topics: ["Software Testing", "API Testing", "Automation", "Bug Reporting"],
     link: "https://drive.google.com/drive/folders/17CQjyZzNsSpLc7TPV_eNlbc_PixyQQwh",
   },
 ];
@@ -80,9 +76,10 @@ const Certifications = () => {
           {CERTS.map((c, i) => (
             <article
               key={c.title}
-              className={`cert${i % 2 ? " cert--flip" : ""}`}
+              className="cert"
               data-aos="fade-up"
               data-aos-duration="900"
+              data-aos-delay={i * 150}
             >
               {/* the certificate itself, like a framed print */}
               <button
@@ -111,19 +108,15 @@ const Certifications = () => {
                 <h3 className="cert__title">{c.title}</h3>
                 <p className="cert__issuer">{c.issuer}</p>
 
-                <dl className="cert__meta">
+                <ul className="cert__meta">
                   {c.meta.map(({ Icon, label, value }) => (
-                    <div key={label}>
-                      <dt>
-                        <Icon aria-hidden="true" />
-                        {label}
-                      </dt>
-                      <dd>{value}</dd>
-                    </div>
+                    <li key={label} title={label}>
+                      <Icon aria-hidden="true" />
+                      <span className="sr-only">{label}: </span>
+                      {value}
+                    </li>
                   ))}
-                </dl>
-
-                <p className="cert__summary">{c.summary}</p>
+                </ul>
 
                 <ul className="cert__topics" aria-label="Topics covered">
                   {c.topics.map((t) => (
