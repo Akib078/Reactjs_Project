@@ -21,6 +21,28 @@ const DETAILS = [
   { Icon: TbCalendarCheck, label: "Open Hours", value: "Mon - Sun: 24/7" },
 ];
 
+// Twinkling star sparkles: x/y position (%), size (px), colour, animation delay (s)
+const FORM_SPARKLES = [
+  [91, 7, 12, "v", 0], [70, 20, 8, "c", -1.2], [96, 46, 9, "v", -2.4], [78, 76, 7, "p", -3.3],
+  [42, 91, 10, "c", -0.6], [46, 5, 7, "v", -1.9], [6, 4, 9, "c", -2.8], [27, 14, 6, "p", -0.3],
+  [60, 44, 6, "v", -3.8], [88, 90, 11, "v", -1.5], [14, 93, 8, "p", -2.1], [62, 97, 6, "c", -4.1],
+  [97, 26, 7, "c", -3.0], [35, 52, 5, "c", -1.0],
+];
+const CARD_SPARKLES = [
+  [[90, 18, 9, "v", 0], [72, 78, 6, "c", -2.2], [96, 62, 6, "p", -1.1]],
+  [[88, 22, 7, "c", -0.8], [64, 80, 9, "v", -2.9], [95, 70, 6, "p", -1.7]],
+  [[92, 25, 8, "p", -1.4], [70, 74, 6, "v", -0.4], [82, 50, 5, "c", -3.1]],
+  [[89, 20, 9, "v", -2.5], [66, 82, 6, "c", -1.0], [96, 64, 7, "v", -3.6]],
+];
+const Sparkles = ({ list }) =>
+  list.map(([x, y, size, tone, delay], i) => (
+    <span
+      key={i}
+      className={`sparkle sparkle--${tone}`}
+      style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, animationDelay: `${delay}s` }}
+    />
+  ));
+
 const EMPTY = { name: "", email: "", subject: "", message: "" };
 
 const Contact = () => {
@@ -60,8 +82,11 @@ const Contact = () => {
           {/* left: details */}
           <aside className="contact__info" data-aos="fade-right" data-aos-duration="2200">
             <ul className="contact__list">
-              {DETAILS.map(({ Icon, label, value, href }) => (
+              {DETAILS.map(({ Icon, label, value, href }, i) => (
                 <li key={label} className="contact__item">
+                  <span className="contact__item-fx" aria-hidden="true">
+                    <Sparkles list={CARD_SPARKLES[i]} />
+                  </span>
                   <span className="contact__icon" aria-hidden="true">
                     <Icon />
                   </span>
@@ -89,9 +114,7 @@ const Contact = () => {
           >
             {/* soft decorative background: ripple lines, drifting glow, twinkling sparkles */}
             <span className="contact__fx" aria-hidden="true">
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <span key={n} className={`contact__sparkle contact__sparkle--${n}`} />
-              ))}
+              <Sparkles list={FORM_SPARKLES} />
             </span>
             <div className="contact__row">
               <label className="field">
