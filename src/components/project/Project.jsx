@@ -16,7 +16,7 @@ Aos.refresh();
 class Project extends Component {
     render() {
         return (
-            <section className="products">
+            <section className="products" id="projects">
             <h2>Software Projects</h2>
             <div className="all-products">
               <div className="product" data-aos="fade-up" data-aos-duration="1500">

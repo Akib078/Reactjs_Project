@@ -1,116 +1,206 @@
+/* Skills — logo marquee (style based on asterot.com "Companies We've Worked With").
+   Note: html font-size is 62.5%, so 1rem = 10px. */
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.skills {
+  --accent: #f5c104;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #0d0d12;
+  padding: 8rem 0 10rem;
+  font-family: "Poppins", sans-serif;
 }
 
-
-
-.servicess{
-    padding: 60px 0;
+.skills__glow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  max-width: 900px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(245, 193, 4, 0.06);
+  filter: blur(90px);
+  pointer-events: none;
 }
 
-.containers{
-    max-width: 1200px;
-    width: 100%;
-    padding: 0 20px;
-    margin: 0 auto;
+/* rounded pill-shaped box around each row (same as asterot: frosted dark pill) */
+.skills__box {
+  width: min(1200px, calc(100% - 3.2rem));
+  margin: 0 auto;
+  padding: 2.2rem clamp(2.4rem, 4vw, 4rem) 2.4rem;
+  border-radius: 999px;
+  /* soft yellow glowing border + faint yellow shade inside */
+  border: 1px solid rgba(245, 193, 4, 0.28);
+  background: radial-gradient(120% 140% at 50% 0%, rgba(245, 193, 4, 0.07), transparent 60%),
+    rgba(13, 13, 18, 0.55);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 24px rgba(245, 193, 4, 0.1),
+    inset 0 0 24px rgba(245, 193, 4, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.skills__box:hover {
+  border-color: rgba(245, 193, 4, 0.45);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 34px rgba(245, 193, 4, 0.18),
+    inset 0 0 28px rgba(245, 193, 4, 0.07);
+}
+.skills__box + .skills__box {
+  margin-top: 2rem;
+}
+.skills__box--slim {
+  padding-block: 1.4rem;
 }
 
-.servicess h2{
-    position: relative;
-    font-size: 28px;
-    line-height: 1.4;
-    text-align: center;
-    font-weight: 700;
-    color: #f5c104;
-    margin-bottom: 80px;
-    margin-top: 80px;
-
+.skills__label {
+  text-align: center;
+  font-size: clamp(1.3rem, 1.6vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0 1.6rem;
+  margin: 0 0 1.8rem;
 }
 
-.servicess .text-services{
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    margin: 0 auto;
-    margin-bottom: 60px;
+/* ---------- marquee ---------- */
+.marquee {
+  --marquee-gap: clamp(3rem, 5vw, 5.5rem);
+  --marquee-duration: 45s;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-block: 0.8rem;
+  /* fade out at both edges */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
-.cards{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+.marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll var(--marquee-duration) linear infinite;
 }
-
-
-
-.card{
-    padding: 2rem;
-    border-radius: 15px;
-    /* border: 1px solid #f5c104; */
-    box-shadow: rgba(255, 200, 19, 0.25) 0px 5px 15px 0px;
-    background-color: white;
-    width: 100%;
-    text-align: center;
+.marquee--reverse .marquee__track {
+  animation-direction: reverse;
 }
-
-.card:hover{
-    padding: 2rem;
-    border-radius: 15px;
-    /* border: 2px solid #f5c104; */
-    background: rgb(245,193,4);
-background: linear-gradient(87deg, rgba(245,193,4,1) 9%, rgba(255,206,28,1) 50%, rgba(255,205,27,1) 100%);
-    width: 100%;
-    text-align: center;
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
 }
-
-.card:hover i{
-color: white;
+.marquee__group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--marquee-gap);
+  padding-right: var(--marquee-gap);
 }
-.card:hover h3{
-    color: white;
- }
-.card:hover p{
-        color: white;
-        }
-.card i{
-    font-size: 45px;
-    color: #f5c104;
-    margin-bottom: 10px;
-    display: block;
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-.card h3{
-    font-size: 20px;
-    line-height: 1.4;
-    font-weight: 700;
-    color: #24262b;
-    margin-bottom: 20px;
+/* tool logos: dim white, light up on hover */
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.28s ease, transform 0.28s ease;
+  cursor: default;
 }
-.card p{
-    color: #747474;
+.marquee__item:hover {
+  color: #fff;
+  transform: translateY(-2px);
 }
-
-@media screen and (max-width: 768px) {
-    .cards{
-        grid-template-columns: repeat(2,1fr);
-    }
+.marquee__item:hover .marquee__icon {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 10px currentColor);
 }
-@media screen and (max-width: 576px) {
-    .servicess h2{
-        font-size: 28px;
-        margin-bottom: 80px;
-    }
-
-    .servicess .text-services{
-        /* font-size: 14px; */
-        line-height: 1.7;
-    }
-    .cards{
-        grid-template-columns: 1fr;
-        grid-gap: 60px;
-    }
+.marquee__icon {
+  width: clamp(28px, 3.4vw, 38px);
+  height: clamp(28px, 3.4vw, 38px);
+  transition: transform 0.28s ease, filter 0.28s ease;
+}
+.marquee__name {
+  font-size: clamp(1.4rem, 1.5vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
+/* expertise pills with small dots */
+.skills .marquee--reverse {
+  --marquee-gap: 1.4rem;
+}
+.skills__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: #e2e2e6;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.skills__pill:hover {
+  border-color: rgba(245, 193, 4, 0.45);
+  background: rgba(245, 193, 4, 0.08);
+}
+.skills__dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(245, 193, 4, 0.6);
+}
+
+@media (max-width: 640px) {
+  .skills__box {
+    border-radius: 28px;
+    padding-inline: 1.6rem;
+  }
+  .skills {
+    padding: 6rem 0 7rem;
+  }
+  .skills__label {
+    letter-spacing: 0.25em;
+    margin-bottom: 1.4rem;
+  }
+}
+
+/* no scrolling for people who turn off motion: show everything wrapped instead */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding-inline: 1.6rem;
+  }
+  .skills__box {
+    border-radius: 28px;
+  }
+  .marquee__track {
+    animation: none;
+    width: auto;
+  }
+  .marquee__group {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    row-gap: 1.6rem;
+  }
+  .marquee__group[aria-hidden="true"] {
+    display: none;
+  }
+}

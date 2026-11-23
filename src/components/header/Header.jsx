@@ -1,93 +1,119 @@
-import React, { useEffect, useState } from "react";
-import {Link,NavLink} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import "./header.css";
-import logo from "../pic/logo.png"
+import logo from "../pic/logo.png";
 
-
+const LINKS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "portfolio", label: "Portfolio" },
+  { id: "contact", label: "Contact" },
+];
 
 function Header() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [active, setActive] = useState("home");
+  const lastY = useRef(0);
+
+  // Darker on scroll; hide while scrolling down, show again when scrolling up
   useEffect(() => {
-    // Function to handle the scroll event
-    const handleScroll = () => {
-      const nav = document.querySelector(".nav");
-
-      if (nav) {
-        if (window.scrollY > 0) {
-          // Add the "nav__scroll" class when scrolling down
-          nav.classList.add("nav__scroll");
-        } else {
-          // Remove the "nav__scroll" class when scrolling to the top
-          nav.classList.remove("nav__scroll");
-        }
-      }
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 10);
+      setHidden(y > lastY.current && y > 120);
+      lastY.current = y;
     };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    // Attach the scroll event listener when the component mounts
-    window.addEventListener("scroll", handleScroll);
+  // Underline follows the section currently in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    LINKS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []); // The empty dependency array ensures this effect runs only once
+  // Close the mobile menu with Escape
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
 
-  
-  const handleScrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-  
-  const [active, setActive] = useState("nav__menu");
-  const [icon, setIcon] = useState("nav__toggler");
-  const navToggle = () => {
-    if (active === "nav__menu") {
-      setActive("nav__menu nav__active");
-    } else setActive("nav__menu");
+  const shellClass = [
+    "navbar-shell",
+    scrolled && "is-scrolled",
+    hidden && !open && "is-hidden",
+    open && "is-open",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-    // Icon Toggler
-    if (icon === "nav__toggler") {
-      setIcon("nav__toggler toggle");
-    } else setIcon("nav__toggler");
-    
-  };
   return (
-    <nav className="nav">
-      <img className="logo" src={logo} alt="" />
-      <ul className={active}>
-        <li className="nav__item">
-          <a href="#home" className="nav__link" onClick={() => handleScrollToSection('home')}>
-            Home
+    <header className={shellClass}>
+      <nav className="navbar-pill" aria-label="Main navigation">
+        <a href="#home" className="navbar-brand" aria-label="Akib Rahman, back to top">
+          <span
+            className="navbar-logo"
+            role="img"
+            aria-label="Akib Rahman"
+            style={{ "--logo-url": `url(${logo})` }}
+          />
+        </a>
+
+        <ul className="navbar-links">
+          {LINKS.map(({ id, label }) => (
+            <li key={id}>
+              <a href={`#${id}`} className={`nav-link${active === id ? " is-active" : ""}`}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          type="button"
+          className={`navbar-toggle${open ? " is-open" : ""}`}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span className="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </nav>
+
+      <div id="mobile-menu" className="mobile-menu">
+        {LINKS.map(({ id, label }) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className={active === id ? "is-active" : undefined}
+            onClick={() => setOpen(false)}
+          >
+            {label}
           </a>
-        </li>
-        <li className="nav__item">
-          <a href="#about" className="nav__link" onClick={() => handleScrollToSection('about')}>
-            About
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="#skills" className="nav__link" onClick={() => handleScrollToSection('skills')}>
-            Skills
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="#portfolio" className="nav__link" onClick={() => handleScrollToSection('portfolio')}>
-            Portfolio
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="#contact" className="nav__link" onClick={() => handleScrollToSection('contact')}>
-            Contact
-          </a>
-        </li>
-      </ul>
-      <div onClick={navToggle} className={icon}>
-        <div className="line1"></div>
-        <div className="line2"></div>
-        <div className="line3"></div>
+        ))}
       </div>
-    </nav>
+    </header>
   );
 }
 
