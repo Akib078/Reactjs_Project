@@ -1,89 +1,104 @@
-import React, { useEffect } from "react"
-import Record from "../record/Record";
-import "./footer.css"
+import React from "react";
+import "./footer.css";
+import {
+  TbBrandLinkedin,
+  TbBrandGithub,
+  TbBrandFacebook,
+  TbBrandInstagram,
+  TbMail,
+  TbArrowUp,
+  TbDownload,
+} from "react-icons/tb";
+import logo from "../pic/logo.png";
+import resume from "../pic/Akib_Rahman_Resume.pdf";
+
+const LINKS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "certifications", label: "Certifications" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
+
+const SOCIALS = [
+  { name: "LinkedIn", Icon: TbBrandLinkedin, href: "https://www.linkedin.com/in/akib-rahman-6748b4220/" },
+  { name: "GitHub", Icon: TbBrandGithub, href: "https://github.com/Akib078" },
+  { name: "Facebook", Icon: TbBrandFacebook, href: "https://www.facebook.com/akibrahman.oion" },
+  { name: "Instagram", Icon: TbBrandInstagram, href: "https://www.instagram.com/akkiibbb/" },
+  { name: "Email", Icon: TbMail, href: "mailto:rahman.oion@gmail.com" },
+];
+
 const Footer = () => {
+  const toTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
-    
-<body>
-<footer className="footer">
-  <div className="containerf">
-    <div className="rowf">
-      <div className="footer-col">
-        <h4>Web Page</h4>
-        <ul>
-          <li>
-            <a href="#home">Home</a>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-      <div className="footer-col">
-        <h4>get help</h4>
-        <ul>
-          <li>
-            <a href="https://web.whatsapp.com/">FAQ</a>
-          </li>
-          <li>
-            <a href="mailto:rahman.oion@gmail.com">Order</a>
-          </li>
-          <li>
-            <a href="mailto:rahman.oion@gmail.com">Complain</a>
-          </li>
-          <li>
-            <a href="#">Shop</a>
-          </li>
-        </ul>
-      </div>
-      <div className="footer-col">
-        <h4>Other Websites</h4>
-        <ul>
-          <li>
-            <a href="https://Akib078.github.io/JS_Portfolio_Project/">Portfolio</a>
-          </li>
-          <li>
-            <a href="https://github.com/Akib078/Selenium_Project">Automation</a>
-          </li>
-          <li>
-            <a href="https://Akib078.github.io/Resume_Project/">Resume</a>
-          </li>
-          <li>
-            <a href="https://Akib078.github.io/Restaurant_Project/">Restaurant</a>
-          </li>
-        </ul>
-      </div>
-      <div className="footer-col">
-        <h4>follow Me</h4>
-        <div className="social-links">
-          <a href="https://www.facebook.com/akibrahman.oion">
-            <i className="fa fa-facebook-f" />
-          </a>
-          <a href="https://web.whatsapp.com/">
-            <i className="fa fa-whatsapp" />
-          </a>
-          <a href="https://www.instagram.com/akkiibbb/">
-            <i className="fa fa-instagram" />
-          </a>
-          <a href="www.linkedin.com/in/akib-rahman-6748b4220">
-            <i className="fa fa-linkedin" />
-          </a>
+    <footer className="footer">
+      <div className="footer__line" aria-hidden="true" />
+      <div className="footer__inner">
+        <div className="footer__top">
+          <div className="footer__brand">
+            <a href="#home" className="footer__logo-link" aria-label="Akib Rahman, back to top">
+              <span
+                className="footer__logo"
+                role="img"
+                aria-label="Akib Rahman"
+                style={{ "--logo-url": `url(${logo})` }}
+              />
+            </a>
+            <p className="footer__roles">Product Manager · QA Engineer · Business Analyst</p>
+            <p className="footer__blurb">
+              Turning business needs into clear requirements, well-tested software and
+              data-driven decisions.
+            </p>
+            <a className="footer__resume" href={resume} download="Akib_Rahman_Resume.pdf">
+              <TbDownload aria-hidden="true" /> Download resume
+            </a>
+          </div>
+
+          <nav className="footer__col" aria-label="Footer">
+            <h4 className="footer__heading">Explore</h4>
+            <ul className="footer__links">
+              {LINKS.map(({ id, label }) => (
+                <li key={id}>
+                  <a href={`#${id}`}>{label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="footer__col">
+            <h4 className="footer__heading">Connect</h4>
+            <ul className="footer__socials">
+              {SOCIALS.map(({ name, Icon, href }) => (
+                <li key={name}>
+                  <a
+                    href={href}
+                    className="footer__social"
+                    aria-label={name}
+                    title={name}
+                    {...(href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    <Icon aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="footer__where">Based in Dhaka, Bangladesh</p>
+          </div>
+        </div>
+
+        <div className="footer__bottom">
+          <p>© {new Date().getFullYear()} Akib Rahman. All rights reserved.</p>
+          <button type="button" className="footer__top-btn" onClick={toTop}>
+            Back to top <TbArrowUp aria-hidden="true" />
+          </button>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
-
-
-</body>
-    
+    </footer>
   );
-}
+};
 
-export default Footer
+export default Footer;

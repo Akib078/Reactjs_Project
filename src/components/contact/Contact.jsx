@@ -1,105 +1,216 @@
-import React, { useEffect } from "react"
-import "./contact.css"
-import Aos from 'aos'
-import 'aos/dist/aos.css'
+import React, { useState } from "react";
+import "./contact.css";
+import {
+  TbMail,
+  TbPhone,
+  TbMapPin,
+  TbBrandLinkedin,
+  TbBrandGithub,
+  TbBrandWhatsapp,
+  TbSend,
+  TbCopy,
+  TbCheck,
+  TbArrowUpRight,
+} from "react-icons/tb";
+import DotGrid from "../common/DotGrid";
+import Aos from "aos";
+import "aos/dist/aos.css";
 Aos.init();
-Aos.refresh();
+
+const EMAIL = "rahman.oion@gmail.com";
+
+const DETAILS = [
+  { Icon: TbMail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, copy: true },
+  { Icon: TbPhone, label: "Phone", value: "+880 1786-101114", href: "tel:+8801786101114" },
+  { Icon: TbMapPin, label: "Location", value: "Mohakhali, Dhaka, Bangladesh" },
+];
+
+const SOCIALS = [
+  { name: "LinkedIn", Icon: TbBrandLinkedin, href: "https://www.linkedin.com/in/akib-rahman-6748b4220/" },
+  { name: "GitHub", Icon: TbBrandGithub, href: "https://github.com/Akib078" },
+  { name: "WhatsApp", Icon: TbBrandWhatsapp, href: "https://wa.me/8801786101114" },
+];
+
+const EMPTY = { name: "", email: "", subject: "", message: "" };
+
 const Contact = () => {
+  const [form, setForm] = useState(EMPTY);
+  const [copied, setCopied] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const update = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  // No server: the form opens the visitor's email app with everything filled in.
+  const submit = (e) => {
+    e.preventDefault();
+    const subject = form.subject.trim() || `Hello from ${form.name.trim()}`;
+    const body = `${form.message.trim()}\n\n— ${form.name.trim()} (${form.email.trim()})`;
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  };
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch (err) {
+      window.location.href = `mailto:${EMAIL}`;
+    }
+  };
+
   return (
-    
-<body>
-<section className="contact" id="contact">
-  <div className="header">
-    <h2>Contact</h2>
-  </div>
-  <div className="containerc">
-    <div className="info_container" data-aos="fade-right" data-aos-duration="2200">
-      <div className="location info_item">
-        <div className="icon">
-          <i className="fa fa-map-marker" />
-        </div>
-        <div className="information">
-          <h4>Location:</h4>
-          <p>Mohakhali, Dhaka</p>
-        </div>
-      </div>
-      <div className="email info_item">
-        <div className="icon">
-          <i className="fa fa-envelope" />
-        </div>
-        <div className="information">
-          <h4>Email:</h4>
-          <p>rahman.oion@gmail.com</p>
-        </div>
-      </div>
-      <div className="call info_item">
-        <div className="icon">
-          <i className="fa fa-phone" />
-        </div>
-        <div className="information">
-          <h4>Phone:</h4>
-          <p>01786101114</p>
-        </div>
-      </div>
-      <div className="call info_item">
-        <div className="icon">
-          <i className="fa fa-calendar-check-o" />
-        </div>
-        <div className="information">
-          <h4>Open Hours:</h4>
-          <p>Mon-Sun: 24/7</p>
-        </div>
-      </div>
-    </div>
-    <div className="input_container" data-aos="fade-left" data-aos-duration="2200">
-      <form action="mailto:rahman.oion@gmail.com">
-        <div className="row">
-          <input
-            type="text"
-            name=""
-            id=""
-            className="form_control"
-            placeholder="Your Name"
-            required=""
-          />
-          <input
-            type="email"
-            name=""
-            id=""
-            className="form_control"
-            placeholder="Email Address"
-            required=""
-          />
-        </div>
-        <input
-          type="text"
-          name=""
-          id=""
-          placeholder="Subject"
-          className="form_control"
-          required=""
-        />
-        <textarea
-          name=""
-          id=""
-          cols={30}
-          rows={7}
-          className="form_control"
-          placeholder="Message"
-          required=""
-          defaultValue={""}
-        />
-        <div className="btn">
-          <button type="submit">Send Message</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
+    <section className="contact" id="contact">
+      <DotGrid />
+      <div className="contact__inner">
+        <header className="contact__head" data-aos="fade-up" data-aos-duration="1000">
+          <span className="contact__eyebrow">
+            <span className="contact__dot" aria-hidden="true" />
+            Get in touch
+          </span>
+          <h2 className="contact__title">
+            Let&rsquo;s build something <span>great</span>
+          </h2>
+          <p className="contact__sub">
+            Open to Product, QA and Business Analysis roles and projects. Send a message and I&rsquo;ll
+            get back to you soon.
+          </p>
+        </header>
 
-</body>
-    
+        <div className="contact__grid">
+          {/* left: details */}
+          <aside className="contact__card contact__info" data-aos="fade-up" data-aos-duration="1000">
+            <span className="contact__status">
+              <span className="contact__pulse" aria-hidden="true" />
+              Available for new opportunities
+            </span>
+
+            <ul className="contact__list">
+              {DETAILS.map(({ Icon, label, value, href, copy }) => (
+                <li key={label} className="contact__item">
+                  <span className="contact__icon" aria-hidden="true">
+                    <Icon />
+                  </span>
+                  <span className="contact__text">
+                    <span className="contact__label">{label}</span>
+                    {href ? (
+                      <a className="contact__value" href={href}>
+                        {value}
+                      </a>
+                    ) : (
+                      <span className="contact__value">{value}</span>
+                    )}
+                  </span>
+                  {copy && (
+                    <button
+                      type="button"
+                      className="contact__copy"
+                      onClick={copyEmail}
+                      aria-label={copied ? "Email copied" : "Copy email address"}
+                      title={copied ? "Copied!" : "Copy"}
+                    >
+                      {copied ? <TbCheck /> : <TbCopy />}
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <div className="contact__socials">
+              <span className="contact__label">Find me on</span>
+              <div className="contact__social-row">
+                {SOCIALS.map(({ name, Icon, href }) => (
+                  <a
+                    key={name}
+                    className="contact__social"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon aria-hidden="true" />
+                    {name}
+                    <TbArrowUpRight className="contact__social-arrow" aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </aside>
+
+          {/* right: message form */}
+          <form
+            className="contact__card contact__form"
+            onSubmit={submit}
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="120"
+          >
+            <div className="contact__row">
+              <label className="field">
+                <span className="field__label">Your name</span>
+                <input
+                  className="field__input"
+                  type="text"
+                  name="name"
+                  autoComplete="name"
+                  placeholder="Jane Doe"
+                  value={form.name}
+                  onChange={update}
+                  required
+                />
+              </label>
+              <label className="field">
+                <span className="field__label">Email address</span>
+                <input
+                  className="field__input"
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  placeholder="jane@company.com"
+                  value={form.email}
+                  onChange={update}
+                  required
+                />
+              </label>
+            </div>
+            <label className="field">
+              <span className="field__label">Subject</span>
+              <input
+                className="field__input"
+                type="text"
+                name="subject"
+                placeholder="Job opportunity, project, question…"
+                value={form.subject}
+                onChange={update}
+              />
+            </label>
+            <label className="field">
+              <span className="field__label">Message</span>
+              <textarea
+                className="field__input field__input--area"
+                name="message"
+                rows={6}
+                placeholder="Tell me a little about it…"
+                value={form.message}
+                onChange={update}
+                required
+              />
+            </label>
+
+            <div className="contact__actions">
+              <button type="submit" className="contact__submit">
+                Send message <TbSend aria-hidden="true" />
+              </button>
+              <p className="contact__note" role="status">
+                {sent
+                  ? "Your email app should open with the message ready to send."
+                  : "Opens your email app with the message filled in."}
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   );
-}
+};
 
-export default Contact
+export default Contact;
