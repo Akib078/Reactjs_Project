@@ -27,14 +27,14 @@
   padding: clamp(0.8rem, 1.3vw, 1.05rem) clamp(1.2rem, 2vw, 2rem);
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(2, 4, 9, 0.55);
+  background: rgba(7, 11, 24, 0.55);
   -webkit-backdrop-filter: blur(14px) saturate(150%);
   backdrop-filter: blur(14px) saturate(150%);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .navbar-shell.is-scrolled .navbar-pill {
-  background: rgba(6, 12, 24, 0.72);
+  background: rgba(11, 18, 34, 0.72);
   border-color: rgba(255, 255, 255, 0.12);
   box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5);
 }
@@ -153,7 +153,7 @@
   padding: 8px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(6, 12, 24, 0.92);
+  background: rgba(11, 18, 34, 0.92);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   backdrop-filter: blur(18px) saturate(150%);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);

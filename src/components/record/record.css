@@ -7,7 +7,7 @@
   --card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
   --card-border: rgba(255, 255, 255, 0.08);
   position: relative;
-  background: #020409;
+  background: #070b18;
   color: #c5c8dc;
   padding: 10rem clamp(1.6rem, 5vw, 6rem) 10rem;
   font-family: "Poppins", sans-serif;
@@ -108,7 +108,7 @@
   isolation: isolate;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #060c18;
+  background: #0b1222;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
     box-shadow 0.35s ease;
@@ -155,7 +155,7 @@
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  background: #020409;
+  background: #070b18;
   border: 3px solid var(--accent);
   box-shadow: 0 0 0 5px rgba(108, 99, 255, 0.12);
 }

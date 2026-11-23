@@ -5,7 +5,7 @@
   --accent: #6c63ff;
   position: relative;
   overflow-x: clip;
-  background: #020409;
+  background: #070b18;
   color: #c5c8dc;
   padding: 10rem clamp(1.6rem, 5vw, 6rem);
   font-family: "Poppins", sans-serif;
@@ -99,7 +99,7 @@
   display: flex;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  background: #060c18;
+  background: #0b1222;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
     box-shadow 0.35s ease;
