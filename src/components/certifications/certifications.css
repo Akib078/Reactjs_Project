@@ -70,6 +70,7 @@
 /* ---------- card ---------- */
 .cert {
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
@@ -101,6 +102,51 @@
   to {
     --cert-angle: 360deg;
   }
+}
+
+/* ---------- floating bubbles (same look as around the Home photo) ---------- */
+.cert__bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.cert__bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.8;
+  animation: cert-bubble 7s ease-in-out infinite;
+}
+/* outlined ones */
+.cert__bubble--2,
+.cert__bubble--5,
+.cert__bubble--7 {
+  background: transparent;
+  border: 2px solid rgba(245, 193, 4, 0.7);
+}
+.cert__bubble--1 { width: 14px; height: 14px; top: 8%;  left: 7%;  animation-duration: 6s; }
+.cert__bubble--2 { width: 24px; height: 24px; top: 5%;  right: 9%; animation-duration: 8s; animation-delay: -2s; }
+.cert__bubble--3 { width: 8px;  height: 8px;  top: 44%; right: 5%; animation-duration: 5s; animation-delay: -1s; opacity: 0.55; }
+.cert__bubble--4 { width: 12px; height: 12px; bottom: 12%; right: 12%; animation-duration: 7s; animation-delay: -3s; }
+.cert__bubble--5 { width: 18px; height: 18px; bottom: 6%; left: 10%; animation-duration: 9s; animation-delay: -4s; }
+.cert__bubble--6 { width: 7px;  height: 7px;  top: 50%; left: 4%;  animation-duration: 6.5s; animation-delay: -2.5s; opacity: 0.5; }
+.cert__bubble--7 { width: 10px; height: 10px; top: 30%; left: 16%; animation-duration: 7.5s; animation-delay: -5s; }
+.cert:nth-child(even) .cert__bubble {
+  animation-direction: reverse;
+}
+@keyframes cert-bubble {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(8px, -14px) scale(1.08); }
+  50% { transform: translate(-6px, -22px) scale(0.92); }
+  75% { transform: translate(-10px, -8px) scale(1.04); }
+}
+/* content stays above the bubbles */
+.cert__frame,
+.cert__body {
+  z-index: 1;
 }
 
 /* ---------- framed certificate ---------- */
@@ -215,6 +261,7 @@
 
 /* ---------- details ---------- */
 .cert__body {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -430,7 +477,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cert {
+  .cert,
+  .cert__bubble {
     animation: none;
   }
   .cert__frame,

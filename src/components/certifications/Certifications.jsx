@@ -81,6 +81,12 @@ const Certifications = () => {
               data-aos-duration="900"
               data-aos-delay={i * 150}
             >
+              {/* small floating bubbles, same as around the profile photo */}
+              <span className="cert__bubbles" aria-hidden="true">
+                {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                  <span key={n} className={`cert__bubble cert__bubble--${n}`} />
+                ))}
+              </span>
               {/* the certificate itself, like a framed print */}
               <button
                 type="button"
