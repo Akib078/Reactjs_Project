@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: space-between;
   gap: clamp(1rem, 2vw, 2rem);
-  max-width: min(1200px, calc(100vw - 2 * var(--nav-gutter)));
+  max-width: min(1040px, calc(100vw - 2 * var(--nav-gutter)));
   margin-inline: auto;
   padding: clamp(0.8rem, 1.3vw, 1.05rem) clamp(1.2rem, 2vw, 2rem);
   border-radius: 9999px;
@@ -148,7 +148,7 @@
 
 .mobile-menu {
   pointer-events: auto;
-  max-width: min(1200px, calc(100vw - 2 * var(--nav-gutter)));
+  max-width: min(1040px, calc(100vw - 2 * var(--nav-gutter)));
   margin: 8px auto 0;
   padding: 8px;
   border-radius: 20px;
