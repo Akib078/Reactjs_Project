@@ -16,6 +16,8 @@ const Home = () => {
 
       <div className="home__container">
         <div className="home__photo-wrap">
+          {/* faint concentric rings behind the photo (style based on tenels.com) */}
+          <span className="home__rings" aria-hidden="true" />
           {/* small floating bubbles around the photo */}
           <span className="home__bubbles" aria-hidden="true">
             {[1, 2, 3, 4, 5, 6, 7].map((n) => (

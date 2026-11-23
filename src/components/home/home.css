@@ -134,6 +134,31 @@
   inherits: false;
   initial-value: 0deg;
 }
+/* Concentric light rings behind the photo */
+.home__rings {
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  width: 1400px;
+  height: 1400px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0 10px,
+    rgba(255, 255, 255, 0.07) 10px 11px
+  );
+  /* strongest near the photo, fading out with distance */
+  -webkit-mask-image: radial-gradient(circle at center, #000 12%, rgba(0, 0, 0, 0.45) 30%, transparent 55%);
+  mask-image: radial-gradient(circle at center, #000 12%, rgba(0, 0, 0, 0.45) 30%, transparent 55%);
+  animation: home__rings 6s ease-in-out infinite;
+}
+@keyframes home__rings {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
 /* Bubbles floating around the photo */
 .home__bubbles {
   position: absolute;
@@ -311,6 +336,7 @@
 @media (prefers-reduced-motion: reduce) {
   .home__photo-wrap::before,
   .home__bubble,
+  .home__rings,
   .home__photo,
   .home__glow {
     animation: none;

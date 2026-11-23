@@ -1,6 +1,7 @@
 import React from "react";
 import "./record.css";
 import CardFx from "../common/CardFx";
+import DotGrid from "../common/DotGrid";
 import Aos from "aos";
 import "aos/dist/aos.css";
 Aos.init();
@@ -87,6 +88,7 @@ const Point = ({ parts }) => (
 const Record = () => {
   return (
     <section id="about" className="about">
+      <DotGrid />
       <div className="about__inner">
         <header className="about__head" data-aos="fade-up" data-aos-duration="1000">
           <span className="about__eyebrow"><span className="dot" aria-hidden="true" />About me</span>

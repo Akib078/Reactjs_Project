@@ -1,6 +1,7 @@
 import React from "react";
 import "./project.css";
 import CardFx from "../common/CardFx";
+import DotGrid from "../common/DotGrid";
 import {
   SiJira,
   SiSelenium,
@@ -138,6 +139,7 @@ const trackSpotlight = (e) => {
 const Project = () => {
   return (
     <section id="projects" className="projects">
+      <DotGrid />
       <div className="projects__inner">
         <header className="projects__head" data-aos="fade-up" data-aos-duration="1000">
           <span className="projects__eyebrow">

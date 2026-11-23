@@ -1,0 +1,29 @@
+/* Dot-grid section background (style based on tenels.com) */
+.dotgrid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.11) 1px, transparent 1.5px) 0 0 / 28px
+    28px;
+  /* fade the grid out towards the edges of the section */
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 30%, transparent 85%);
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 30%, transparent 85%);
+}
+
+/* yellow dots that light up around the mouse */
+.dotgrid__lit {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #f5c104 1.4px, transparent 2px) 0 0 / 28px 28px;
+  -webkit-mask-image: radial-gradient(
+    220px circle at var(--px, -999px) var(--py, -999px),
+    #000,
+    transparent 70%
+  );
+  mask-image: radial-gradient(
+    220px circle at var(--px, -999px) var(--py, -999px),
+    #000,
+    transparent 70%
+  );
+}
