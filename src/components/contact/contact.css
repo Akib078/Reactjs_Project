@@ -359,6 +359,84 @@ a.contact__value:focus-visible {
   50% { opacity: 0.55; transform: scale(1) rotate(45deg); }
 }
 
+/* ---------- envelope + paper plane illustration (bottom-right of the form) ---------- */
+.contact__form > .mailfx {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.4rem;
+  z-index: 2;
+  width: 190px;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+}
+.contact__actions {
+  padding-right: 190px;
+}
+.mailfx__trail {
+  fill: none;
+  stroke: rgba(108, 99, 255, 0.55);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 4 6;
+  animation: mailfx__dash 1.6s linear infinite;
+}
+.mailfx__back {
+  fill: #4f47d6;
+}
+.mailfx__paper {
+  fill: var(--surface);
+  stroke: rgba(108, 99, 255, 0.35);
+  stroke-width: 1;
+}
+.mailfx__ln {
+  stroke: rgba(0, 180, 230, 0.55);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.mailfx__ln--soft {
+  stroke: rgba(108, 99, 255, 0.35);
+}
+.mailfx__side {
+  fill: #6c63ff;
+}
+.mailfx__front {
+  fill: url(#mailfx-front);
+}
+.mailfx__fold {
+  fill: #b9b4ff;
+}
+.mailfx__fold--dark {
+  fill: #5a52e0;
+}
+.mailfx__letter {
+  animation: mailfx__letter 3.2s ease-in-out infinite;
+}
+.mailfx__plane-wrap {
+  animation: mailfx__float 3.6s ease-in-out infinite;
+}
+/* after "Send message": the plane zooms off and glides back in */
+.mailfx.is-sent .mailfx__plane-wrap {
+  animation: mailfx__fly 2.4s cubic-bezier(0.5, 0, 0.3, 1) 1, mailfx__float 3.6s ease-in-out 2.4s infinite;
+}
+@keyframes mailfx__dash {
+  to { stroke-dashoffset: -20; }
+}
+@keyframes mailfx__letter {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes mailfx__float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-3px, -6px) rotate(-3deg); }
+}
+@keyframes mailfx__fly {
+  0% { transform: translate(0, 0); opacity: 1; }
+  40% { transform: translate(140px, -90px); opacity: 0; }
+  41% { transform: translate(-60px, 40px); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
+}
+
 /* ---------- responsive ---------- */
 @media (max-width: 991px) {
   .contact__box {
@@ -389,14 +467,27 @@ a.contact__value:focus-visible {
   .contact__info {
     padding: 1.6rem;
   }
-  .contact__submit {
-    width: 100%;
-    justify-content: center;
+  .contact__form > .mailfx {
+    width: 120px;
+    right: 0.6rem;
+    bottom: 1rem;
+  }
+  .contact__actions {
+    padding-right: 110px;
+  }
+  .contact__note {
+    min-width: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .contact__fx::before,
   .contact__fx::after {
+    animation: none;
+  }
+  .mailfx__trail,
+  .mailfx__letter,
+  .mailfx__plane-wrap,
+  .mailfx.is-sent .mailfx__plane-wrap {
     animation: none;
   }
   .sparkle {

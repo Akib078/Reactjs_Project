@@ -116,6 +116,50 @@ const Contact = () => {
             <span className="contact__fx" aria-hidden="true">
               <Sparkles list={FORM_SPARKLES} />
             </span>
+
+            {/* envelope + letter with a dashed trail looping up to a paper plane */}
+            <svg
+              className={`mailfx${sent ? " is-sent" : ""}`}
+              viewBox="0 0 220 150"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <defs>
+                <linearGradient id="mailfx-front" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stopColor="#6c63ff" />
+                  <stop offset="1" stopColor="#00d4ff" />
+                </linearGradient>
+                <linearGradient id="mailfx-plane" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stopColor="#8f88ff" />
+                  <stop offset="1" stopColor="#00d4ff" />
+                </linearGradient>
+              </defs>
+
+              <path
+                className="mailfx__trail"
+                d="M62 96 C14 92 12 30 62 26 C104 22 120 64 156 52 C172 46 180 40 188 36"
+              />
+
+              <rect className="mailfx__back" x="44" y="88" width="88" height="54" rx="5" />
+              <g className="mailfx__letter">
+                <rect className="mailfx__paper" x="56" y="54" width="64" height="70" rx="4" />
+                <line className="mailfx__ln" x1="66" y1="68" x2="110" y2="68" />
+                <line className="mailfx__ln mailfx__ln--soft" x1="66" y1="78" x2="104" y2="78" />
+                <line className="mailfx__ln" x1="66" y1="88" x2="110" y2="88" />
+                <line className="mailfx__ln mailfx__ln--soft" x1="66" y1="98" x2="98" y2="98" />
+              </g>
+              <path className="mailfx__side" d="M44 92 L84 118 L44 142 Z" />
+              <path className="mailfx__side" d="M132 92 L92 118 L132 142 Z" />
+              <path className="mailfx__front" d="M44 142 L88 108 L132 142 Z" />
+
+              <g className="mailfx__plane-wrap">
+                <g className="mailfx__plane" transform="translate(186 34) rotate(-14)">
+                  <path d="M0 8 L30 -6 L12 12 Z" fill="url(#mailfx-plane)" />
+                  <path d="M12 12 L30 -6 L16 20 Z" className="mailfx__fold" />
+                  <path d="M0 8 L12 12 L10 18 Z" className="mailfx__fold mailfx__fold--dark" />
+                </g>
+              </g>
+            </svg>
             <div className="contact__row">
               <label className="field">
                 <span className="field__label">Your name</span>
