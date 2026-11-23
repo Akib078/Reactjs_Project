@@ -1,8 +1,30 @@
 import React from "react";
 import "./project.css";
 import CardFx from "../common/CardFx";
-import { SiJira, SiSelenium, SiGithub } from "react-icons/si";
-import { TbChartHistogram, TbFileExcel, TbArrowUpRight } from "react-icons/tb";
+import {
+  SiJira,
+  SiSelenium,
+  SiGithub,
+  SiConfluence,
+  SiFigma,
+  SiPostman,
+  SiGoogledocs,
+} from "react-icons/si";
+import { TbChartHistogram, TbFileExcel, TbSql, TbArrowUpRight } from "react-icons/tb";
+
+// Tool logos (brand colours) shown on the project cards
+const T = {
+  confluence: { name: "Confluence", Icon: SiConfluence, color: "#2684FF" },
+  jira: { name: "Jira", Icon: SiJira, color: "#2684FF" },
+  github: { name: "GitHub", Icon: SiGithub, color: "#FFFFFF" },
+  figma: { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
+  selenium: { name: "Selenium", Icon: SiSelenium, color: "#43B02A" },
+  excel: { name: "Excel", Icon: TbFileExcel, color: "#21A366" },
+  postman: { name: "Postman", Icon: SiPostman, color: "#FF6C37" },
+  powerbi: { name: "Power BI", Icon: TbChartHistogram, color: "#F2C811" },
+  sql: { name: "SQL", Icon: TbSql, color: "#4FA3E0" },
+  docs: { name: "Google Docs", Icon: SiGoogledocs, color: "#4285F4" },
+};
 import Aos from "aos";
 import "aos/dist/aos.css";
 Aos.init();
@@ -20,8 +42,7 @@ const PROJECTS = [
       { value: "400+", label: "Test cases" },
     ],
     tools: ["Jira", "Confluence", "GitHub", "UAT"],
-    Icon: SiJira,
-    color: "#2684FF",
+    icons: [T.confluence, T.jira, T.github, T.figma],
     link: "https://github.com/Akib078/Falaq_Food_Business_Analysis",
     wide: true,
   },
@@ -35,8 +56,7 @@ const PROJECTS = [
       { value: "E2E", label: "& UAT" },
     ],
     tools: ["Selenium", "Java", "Jira", "Test Plan"],
-    Icon: SiSelenium,
-    color: "#43B02A",
+    icons: [T.selenium, T.excel, T.jira, T.postman],
     link: "https://github.com/Akib078/Falaq_Food_Storefront_Testing/",
   },
   {
@@ -49,8 +69,7 @@ const PROJECTS = [
       { value: "SQL", label: "Behaviour analysis" },
     ],
     tools: ["Power BI", "SQL", "Excel", "Power Query"],
-    Icon: TbChartHistogram,
-    color: "#F2C811",
+    icons: [T.powerbi, T.excel, T.sql],
     link: "https://github.com/Akib078/OLA_Data_Analysis",
   },
   {
@@ -63,8 +82,7 @@ const PROJECTS = [
       { value: "1", label: "Interactive dashboard" },
     ],
     tools: ["Excel", "Power Query", "Pivot Tables"],
-    Icon: TbFileExcel,
-    color: "#21A366",
+    icons: [T.excel, T.docs],
     link: "https://github.com/Akib078/Maven_Coffee_Analysis",
     wide: true,
   },
@@ -100,7 +118,7 @@ const Project = () => {
             <article
               key={p.title}
               className={`project-card${p.wide ? " project-card--wide" : ""}`}
-              style={{ "--brand": p.color }}
+              style={{ "--brand": p.icons[0].color }}
               onMouseMove={trackSpotlight}
               data-aos="fade-up"
               data-aos-duration="900"
@@ -108,7 +126,10 @@ const Project = () => {
             >
               <CardFx seed={i + 2} count={7} />
               <span className="project-card__spotlight" aria-hidden="true" />
-              <p.Icon className="project-card__watermark" aria-hidden="true" />
+              {React.createElement(p.icons[0].Icon, {
+                className: "project-card__watermark",
+                "aria-hidden": true,
+              })}
 
               <div className="project-card__body">
                 <div className="project-card__top">
@@ -119,9 +140,14 @@ const Project = () => {
                   <span className="project-card__num">{String(i + 1).padStart(2, "0")}</span>
                 </div>
 
-                <span className="project-card__icon" aria-hidden="true">
-                  <p.Icon />
-                </span>
+                <ul className="project-card__icons" aria-label="Tools used">
+                  {p.icons.map(({ name, Icon, color }) => (
+                    <li key={name} className="project-card__icon" title={name} style={{ color }}>
+                      <Icon aria-hidden="true" />
+                      <span className="project-card__icon-name">{name}</span>
+                    </li>
+                  ))}
+                </ul>
 
                 <h3 className="project-card__title">{p.title}</h3>
                 <p className="project-card__summary">{p.summary}</p>
