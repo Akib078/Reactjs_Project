@@ -34,7 +34,7 @@ const T = {
 const PROJECTS = [
   {
     title: "Falaq Food — ERP/CRM Software Management",
-    category: "Business Analysis · Product",
+    category: "Business Analysis · Product Management",
     summary:
       "Analysed business workflows and pain points to shape a custom ERP/CRM, taking it from requirements and backlog to tested releases.",
     stats: [
@@ -62,7 +62,7 @@ const PROJECTS = [
   },
   {
     title: "OLA — Growth & Business Analysis",
-    category: "Data Analysis",
+    category: "Business Intelligence",
     summary:
       "Cleaned ride data and built interactive dashboards on bookings, cancellations and revenue, backed by SQL analysis.",
     stats: [
