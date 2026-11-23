@@ -9,8 +9,16 @@ import {
   SiFigma,
   SiPostman,
   SiGoogledocs,
+  SiJavascript,
+  SiApachejmeter,
 } from "react-icons/si";
-import { TbChartHistogram, TbFileExcel, TbSql, TbArrowUpRight } from "react-icons/tb";
+import {
+  TbChartHistogram,
+  TbFileExcel,
+  TbSql,
+  TbArrowUpRight,
+  TbTerminal2,
+} from "react-icons/tb";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -28,6 +36,9 @@ const T = {
   powerbi: { name: "Power BI", Icon: TbChartHistogram, color: "#F2C811" },
   sql: { name: "SQL", Icon: TbSql, color: "#4FA3E0" },
   docs: { name: "Google Docs", Icon: SiGoogledocs, color: "#4285F4" },
+  javascript: { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+  newman: { name: "Newman", Icon: TbTerminal2, color: "#E6E6EA" },
+  jmeter: { name: "JMeter", Icon: SiApachejmeter, color: "#D22128" },
 };
 
 // Projects from Akib_Rahman_Resume.pdf (links taken from the resume)
@@ -86,6 +97,34 @@ const PROJECTS = [
     icons: [T.excel, T.docs],
     link: "https://github.com/Akib078/Maven_Coffee_Analysis",
     wide: true,
+  },
+  {
+    title: "Restful Booker — REST API Testing & Automation",
+    category: "API Testing · Automation",
+    summary:
+      "Tested a booking REST API with POST, GET, PUT and DELETE in Postman, automated response checks with JavaScript assertions and ran the collection with Newman for reports.",
+    stats: [
+      { value: "CRUD", label: "All 4 methods" },
+      { value: "JS", label: "Automated assertions" },
+      { value: "Newman", label: "CLI test reports" },
+    ],
+    tools: ["REST API", "Postman", "JavaScript", "Newman"],
+    icons: [T.postman, T.javascript, T.newman],
+    link: "https://github.com/Akib078/Booking_API_Testing",
+    wide: true,
+  },
+  {
+    title: "Booking API — Performance & Load Testing",
+    category: "Performance Testing",
+    summary:
+      "Load-tested the same API in JMeter with different threads, ramp-up periods and loops to check its speed and stability under pressure.",
+    stats: [
+      { value: "5", label: "HTTP methods" },
+      { value: "Load", label: "& stress tests" },
+    ],
+    tools: ["JMeter", "Load", "Stress", "Listeners"],
+    icons: [T.jmeter],
+    link: "https://github.com/Akib078/Performance_Testing_Booking_API",
   },
 ];
 
