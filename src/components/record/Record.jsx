@@ -13,7 +13,7 @@ const EXPERIENCE = [
     role: "QA & Product Management Support",
     org: "Tenels | Falaq Food",
     place: "Dhaka",
-    date: "Jul 2026 – Present",
+    date: "Jun 2026 – Present",
     current: true,
     points: [
       ["Joined daily Scrum and business analysis meetings with client teams, defined ", "60+", " backlog items and tracked priority-based releases."],
