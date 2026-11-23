@@ -1,61 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./certifications.css";
 import {
   TbRosetteDiscountCheckFilled,
-  TbCertificate,
   TbArrowUpRight,
-  TbSchool,
-  TbWorld,
+  TbZoomIn,
+  TbX,
+  TbCalendar,
+  TbHash,
+  TbUser,
 } from "react-icons/tb";
+import certItbd from "../pic/cert-it-training-bd.png";
+import certSimplilearn from "../pic/cert-simplilearn-powerbi.png";
 import Aos from "aos";
 import "aos/dist/aos.css";
 Aos.init();
 
-// From Akib_Rahman_Resume.pdf ("Courses & Certifications"), with the certificate links in it
+// Details read from the certificate images; links from Akib_Rahman_Resume.pdf
 const CERTS = [
   {
-    title: "Business Analysis and Power BI Complete Course",
-    issuer: "Simplilearn",
-    mode: "Online",
-    ModeIcon: TbWorld,
+    title: "Business Analysis & Power BI for Beginners",
+    issuer: "Simplilearn SkillUp",
+    kind: "Declaration of Completion",
+    image: certSimplilearn,
+    meta: [
+      { Icon: TbCalendar, label: "Issued", value: "2 Jan 2026" },
+      { Icon: TbHash, label: "Certificate code", value: "10179668" },
+    ],
     summary:
-      "Business and software analysis, advanced Excel and Power BI fundamentals: from gathering requirements to building reports.",
+      "Online course covering business and software analysis, advanced Excel and Power BI fundamentals, from gathering requirements to building reports.",
     topics: ["Business Analysis", "Software Analysis", "Advanced Excel", "Power BI"],
     link: "https://drive.google.com/file/d/1tX1fDA03VuNMm-JyKBqgmQ4RAeuHjLPS/view?usp=sharing",
   },
   {
-    title: "SQA Training Course",
+    title: "Hands-on SQA & Cyber Security Course",
     issuer: "IT Training BD",
-    mode: "Remote",
-    ModeIcon: TbSchool,
+    kind: "Certificate of Completion",
+    image: certItbd,
+    meta: [
+      { Icon: TbHash, label: "Certificate no.", value: "ITB-B28-4920" },
+      { Icon: TbUser, label: "Trainer", value: "Sabiul Islam Rashed" },
+    ],
     summary:
-      "Hands-on training in software, API, automation and database testing and bug reporting, guided by experienced industry professionals.",
+      "Recognised for stellar performance in hands-on training on software, API, automation and database testing and bug reporting, led by industry professionals.",
     topics: ["Software Testing", "API Testing", "Automation", "Database Testing", "Bug Reporting"],
     link: "https://drive.google.com/drive/folders/17CQjyZzNsSpLc7TPV_eNlbc_PixyQQwh",
   },
 ];
 
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-// Gentle 3D tilt that follows the mouse
-const tilt = (e) => {
-  if (prefersReducedMotion()) return;
-  const el = e.currentTarget;
-  const r = el.getBoundingClientRect();
-  const x = (e.clientX - r.left) / r.width - 0.5;
-  const y = (e.clientY - r.top) / r.height - 0.5;
-  el.style.setProperty("--ry", `${x * 8}deg`);
-  el.style.setProperty("--rx", `${-y * 8}deg`);
-};
-const resetTilt = (e) => {
-  e.currentTarget.style.setProperty("--ry", "0deg");
-  e.currentTarget.style.setProperty("--rx", "0deg");
-};
-
 const Certifications = () => {
+  const [open, setOpen] = useState(null); // certificate shown full-size
+
+  // Close the full-size view with Escape, and stop the page scrolling behind it
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKey = (e) => e.key === "Escape" && setOpen(null);
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   return (
     <section id="certifications" className="certs">
       <div className="certs__inner">
@@ -71,61 +78,106 @@ const Certifications = () => {
 
         <div className="certs__list">
           {CERTS.map((c, i) => (
-            <div
-              className="cert-wrap"
+            <article
               key={c.title}
+              className={`cert${i % 2 ? " cert--flip" : ""}`}
               data-aos="fade-up"
               data-aos-duration="900"
-              data-aos-delay={i * 150}
             >
-              <article className="cert" onMouseMove={tilt} onMouseLeave={resetTilt}>
-                <span className="cert__shine" aria-hidden="true" />
+              {/* the certificate itself, like a framed print */}
+              <button
+                type="button"
+                className="cert__frame"
+                onClick={() => setOpen(c)}
+                aria-label={`View the ${c.title} certificate full size`}
+              >
+                <span className="cert__ribbon">
+                  <TbRosetteDiscountCheckFilled aria-hidden="true" />
+                  Certified
+                </span>
+                <img src={c.image} alt={`${c.kind}: ${c.title}, ${c.issuer}`} loading="lazy" />
+                <span className="cert__zoom" aria-hidden="true">
+                  <TbZoomIn />
+                  View full size
+                </span>
+              </button>
 
-                {/* left stub: the seal */}
-                <div className="cert__stub">
-                  <span className="cert__seal" aria-hidden="true">
-                    <TbRosetteDiscountCheckFilled />
-                  </span>
-                  <span className="cert__stamp">Certified</span>
-                  <span className="cert__no">No. {String(i + 1).padStart(2, "0")}</span>
-                </div>
+              {/* details */}
+              <div className="cert__body">
+                <p className="cert__kind">
+                  <span className="certs__dot" aria-hidden="true" />
+                  {c.kind}
+                </p>
+                <h3 className="cert__title">{c.title}</h3>
+                <p className="cert__issuer">{c.issuer}</p>
 
-                {/* perforated tear line */}
-                <span className="cert__perf" aria-hidden="true" />
+                <dl className="cert__meta">
+                  {c.meta.map(({ Icon, label, value }) => (
+                    <div key={label}>
+                      <dt>
+                        <Icon aria-hidden="true" />
+                        {label}
+                      </dt>
+                      <dd>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
 
-                {/* main body */}
-                <div className="cert__body">
-                  <p className="cert__issuer">
-                    <TbCertificate aria-hidden="true" />
-                    {c.issuer}
-                    <span className="cert__mode">
-                      <c.ModeIcon aria-hidden="true" />
-                      {c.mode}
-                    </span>
-                  </p>
-                  <h3 className="cert__title">{c.title}</h3>
-                  <p className="cert__summary">{c.summary}</p>
-                  <ul className="cert__topics" aria-label="Topics covered">
-                    {c.topics.map((t) => (
-                      <li key={t}>{t}</li>
-                    ))}
-                  </ul>
+                <p className="cert__summary">{c.summary}</p>
+
+                <ul className="cert__topics" aria-label="Topics covered">
+                  {c.topics.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+
+                <div className="cert__actions">
+                  <button type="button" className="cert__btn" onClick={() => setOpen(c)}>
+                    <TbZoomIn aria-hidden="true" />
+                    View certificate
+                  </button>
                   <a
                     className="cert__link"
                     href={c.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`View certificate: ${c.title}`}
                   >
-                    View certificate
+                    Open original
                     <TbArrowUpRight aria-hidden="true" />
                   </a>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>
+
+      {/* full-size viewer */}
+      {open && (
+        <div
+          className="cert-viewer"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${open.title} certificate`}
+          onClick={() => setOpen(null)}
+        >
+          <button
+            type="button"
+            className="cert-viewer__close"
+            onClick={() => setOpen(null)}
+            aria-label="Close"
+            autoFocus
+          >
+            <TbX />
+          </button>
+          <figure className="cert-viewer__figure" onClick={(e) => e.stopPropagation()}>
+            <img src={open.image} alt={`${open.kind}: ${open.title}, ${open.issuer}`} />
+            <figcaption>
+              {open.title} · {open.issuer}
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </section>
   );
 };
