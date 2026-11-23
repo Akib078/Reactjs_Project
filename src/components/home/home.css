@@ -115,10 +115,10 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  /* zoom toward face and upper body */
-  object-position: 50% 30%;
-  transform: scale(1.35);
-  transform-origin: 50% 30%;
+  /* crop: from just above the head down to the bottom of the shirt pocket */
+  object-position: 50% 50%;
+  transform: scale(1.667);
+  transform-origin: 50% 33.3%;
   filter: saturate(0.85) brightness(0.92);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
 }
