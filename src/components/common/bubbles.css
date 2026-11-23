@@ -6,6 +6,9 @@
   overflow: hidden;
   border-radius: inherit;
   pointer-events: none;
+  /* kept soft so the bubbles sit in the background, not on top of the text */
+  opacity: 0.45;
+  filter: blur(0.6px);
 }
 .bubble {
   position: absolute;
