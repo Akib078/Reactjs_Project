@@ -29,7 +29,7 @@ Aos.init();
 const T = {
   confluence: { name: "Confluence", Icon: SiConfluence, color: "#2684FF" },
   jira: { name: "Jira", Icon: SiJira, color: "#2684FF" },
-  github: { name: "GitHub", Icon: SiGithub, color: "#FFFFFF" },
+  github: { name: "GitHub", Icon: SiGithub, color: "var(--heading)" },
   figma: { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
   selenium: { name: "Selenium", Icon: SiSelenium, color: "#43B02A" },
   excel: { name: "Excel", Icon: TbFileExcel, color: "#21A366" },

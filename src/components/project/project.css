@@ -5,8 +5,8 @@
   --accent: #6c63ff;
   position: relative;
   overflow-x: clip;
-  background: #070b18;
-  color: #c5c8dc;
+  background: var(--bg);
+  color: var(--text-3);
   padding: 10rem clamp(1.6rem, 5vw, 6rem);
   font-family: "Poppins", sans-serif;
 }
@@ -56,7 +56,7 @@
   font-size: clamp(3rem, 4.5vw, 4.2rem);
   font-weight: 600;
   line-height: 1.2;
-  color: #e8eaf6;
+  color: var(--text);
   margin-bottom: 1.6rem;
 }
 .projects__title span {
@@ -65,7 +65,7 @@
 .projects__summary {
   font-size: 1.6rem;
   line-height: 1.7;
-  color: #9397b0;
+  color: var(--muted);
 }
 .projects__dot {
   flex-shrink: 0;
@@ -100,8 +100,8 @@
   border-radius: 26px;
   /* softly glowing violet border */
   border: 1px solid rgba(108, 99, 255, 0.4);
-  background: #0b1222;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 18px rgba(108, 99, 255, 0.16),
+  background: var(--surface);
+  box-shadow: 0 25px 50px -12px rgba(var(--shadow-rgb), calc(0.6 * var(--shadow-k))), 0 0 18px rgba(108, 99, 255, 0.16),
     inset 0 0 14px rgba(108, 99, 255, 0.06);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
     box-shadow 0.35s ease;
@@ -109,7 +109,7 @@
 .project-card:hover {
   transform: translateY(-5px);
   border-color: rgba(108, 99, 255, 0.7);
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(108, 99, 255, 0.3),
+  box-shadow: 0 30px 60px -12px rgba(var(--shadow-rgb), calc(0.7 * var(--shadow-k))), 0 0 30px rgba(108, 99, 255, 0.3),
     inset 0 0 18px rgba(108, 99, 255, 0.08);
 }
 
@@ -176,7 +176,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #dfe2f2;
+  color: var(--text-2);
   padding: 0.5rem 1.2rem;
   border-radius: 999px;
   border: 1px solid rgba(108, 99, 255, 0.3);
@@ -186,7 +186,7 @@
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(var(--ink-rgb), 0.28);
 }
 
 .project-card__icons {
@@ -205,9 +205,9 @@
   height: 4.6rem;
   border-radius: 13px;
   font-size: 2.3rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.03);
+  background: rgba(var(--ink-rgb), 0.05);
+  border: 1px solid rgba(var(--ink-rgb), 0.1);
+  box-shadow: inset 0 0 18px rgba(var(--ink-rgb), 0.03);
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
 .project-card__icon:hover {
@@ -223,9 +223,9 @@
   white-space: nowrap;
   font-size: 1.15rem;
   font-weight: 600;
-  color: #e8eaf6;
-  background: #0b1020;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid rgba(var(--ink-rgb), 0.12);
   padding: 0.3rem 0.9rem;
   border-radius: 8px;
   opacity: 0;
@@ -244,13 +244,13 @@
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.35;
-  color: #e8eaf6;
+  color: var(--text);
   margin-bottom: 1rem;
 }
 .project-card__summary {
   font-size: 1.45rem;
   line-height: 1.7;
-  color: #a3a7bf;
+  color: var(--muted);
   margin-bottom: 2.2rem;
 }
 
@@ -261,7 +261,7 @@
   gap: 1rem 2.8rem;
   margin: 0 0 2.4rem;
   padding: 1.6rem 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(var(--ink-rgb), 0.08);
 }
 .project-card__stats dt {
   font-size: 2.6rem;
@@ -273,7 +273,7 @@
   margin: 0.2rem 0 0;
   font-size: 1.2rem;
   letter-spacing: 0.04em;
-  color: #7e83a0;
+  color: var(--muted-2);
 }
 
 /* tools + link, pinned to the bottom */
@@ -296,11 +296,11 @@
   list-style: none;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #d2d5e8;
+  color: var(--text-2);
   padding: 0.4rem 1.1rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(var(--ink-rgb), 0.05);
+  border: 1px solid rgba(var(--ink-rgb), 0.1);
 }
 
 .project-card__link {
@@ -345,7 +345,7 @@
   gap: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #e8eaf6;
+  color: var(--text);
   padding: 1.1rem 2.2rem;
   border-radius: 999px;
   border: 1px solid rgba(108, 99, 255, 0.3);

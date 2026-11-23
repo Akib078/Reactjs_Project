@@ -35,7 +35,7 @@ const TOOLS = [
   { name: "Postman", Icon: SiPostman, color: "#FF6C37" },
   { name: "Selenium", Icon: SiSelenium, color: "#43B02A" },
   { name: "Git", Icon: FaGitAlt, color: "#F05032" },
-  { name: "GitHub", Icon: SiGithub, color: "#FFFFFF" },
+  { name: "GitHub", Icon: SiGithub, color: "var(--heading)" },
   { name: "Zoho", Icon: SiZoho, color: "#E42527" },
   { name: "Python", Icon: SiPython, color: "#4B8BBE" },
   { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },

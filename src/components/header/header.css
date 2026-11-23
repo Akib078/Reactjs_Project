@@ -26,17 +26,17 @@
   margin-inline: auto;
   padding: clamp(0.8rem, 1.3vw, 1.05rem) clamp(1.2rem, 2vw, 2rem);
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(7, 11, 24, 0.55);
+  border: 1px solid rgba(var(--ink-rgb), 0.08);
+  background: rgba(var(--bg-rgb), 0.55);
   -webkit-backdrop-filter: blur(14px) saturate(150%);
   backdrop-filter: blur(14px) saturate(150%);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 30px rgba(var(--shadow-rgb), calc(0.35 * var(--shadow-k)));
   transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .navbar-shell.is-scrolled .navbar-pill {
-  background: rgba(11, 18, 34, 0.72);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5);
+  background: rgba(var(--surface-rgb), 0.72);
+  border-color: rgba(var(--ink-rgb), 0.12);
+  box-shadow: 0 14px 44px rgba(var(--shadow-rgb), calc(0.5 * var(--shadow-k)));
 }
 
 /* Logo PNG used as a mask: "Akib" white, "Rahman" yellow, so it reads on the dark pill */
@@ -52,7 +52,7 @@
   display: block;
   height: 38px;
   aspect-ratio: 1404 / 304;
-  background: linear-gradient(90deg, #fff 0 36.5%, #6c63ff 36.5%, #00d4ff 100%);
+  background: linear-gradient(90deg, var(--logo-ink) 0 36.5%, #6c63ff 36.5%, #00d4ff 100%);
   -webkit-mask: var(--logo-url) center / contain no-repeat;
   mask: var(--logo-url) center / contain no-repeat;
 }
@@ -72,7 +72,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 15.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(var(--ink-rgb), 0.72);
   text-decoration: none;
   transition: color 0.22s ease;
 }
@@ -91,7 +91,7 @@
 }
 .navbar-links .nav-link:hover,
 .navbar-links .nav-link.is-active {
-  color: #fff;
+  color: var(--heading);
 }
 .navbar-links .nav-link:hover::after,
 .navbar-links .nav-link.is-active::after {
@@ -110,14 +110,14 @@
   width: 46px;
   height: 46px;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
+  border: 1px solid rgba(var(--ink-rgb), 0.1);
+  background: rgba(var(--ink-rgb), 0.04);
+  color: var(--heading);
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
 .navbar-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(var(--ink-rgb), 0.1);
 }
 .navbar-toggle:focus-visible {
   outline: 2px solid var(--nav-accent);
@@ -152,11 +152,11 @@
   margin: 8px auto 0;
   padding: 8px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(11, 18, 34, 0.92);
+  border: 1px solid rgba(var(--ink-rgb), 0.1);
+  background: rgba(var(--surface-rgb), 0.92);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   backdrop-filter: blur(18px) saturate(150%);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(var(--shadow-rgb), calc(0.5 * var(--shadow-k)));
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px) scale(0.98);
@@ -175,17 +175,17 @@
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #c5c8dc;
+  color: var(--text-3);
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }
 .mobile-menu a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: rgba(var(--ink-rgb), 0.08);
+  color: var(--heading);
 }
 .mobile-menu a.is-active {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: rgba(var(--ink-rgb), 0.1);
+  color: var(--heading);
   box-shadow: inset 3px 0 0 var(--nav-accent);
 }
 
@@ -212,5 +212,79 @@
   .hamburger span,
   .navbar-links .nav-link::after {
     transition: none !important;
+  }
+}
+
+/* ---------- Morning / night switch ---------- */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.theme-toggle {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(108, 99, 255, 0.4);
+  background: rgba(var(--ink-rgb), 0.04);
+  box-shadow: 0 0 14px rgba(108, 99, 255, 0.14), inset 0 0 10px rgba(108, 99, 255, 0.06);
+  color: var(--heading);
+  font-size: 1.9rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.theme-toggle:hover {
+  border-color: rgba(108, 99, 255, 0.7);
+  background: rgba(108, 99, 255, 0.1);
+  box-shadow: 0 0 22px rgba(108, 99, 255, 0.28), inset 0 0 12px rgba(108, 99, 255, 0.08);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--nav-accent);
+  outline-offset: 2px;
+}
+/* sun and moon sit on top of each other; the hidden one spins away */
+.theme-toggle__icon {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.theme-toggle__icon.is-shown {
+  opacity: 1;
+  transform: none;
+}
+/* sun is warm, moon is violet */
+.theme-toggle__icon:first-child {
+  color: #ffb547;
+}
+.theme-toggle__icon:last-child {
+  color: #6c63ff;
+}
+@media (max-width: 860px) {
+  .theme-toggle {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* colours fade smoothly only while the theme is switching */
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease,
+    box-shadow 0.45s ease, fill 0.45s ease, opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__icon {
+    transition: none;
   }
 }

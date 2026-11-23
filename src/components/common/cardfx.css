@@ -9,7 +9,7 @@
   z-index: 0;
   background: radial-gradient(circle at top left, rgba(108, 99, 255, 0.13), transparent 30%),
     radial-gradient(circle at 85% 20%, rgba(0, 212, 255, 0.08), transparent 42%),
-    linear-gradient(160deg, #080d1c 0%, #0b1222 45%, #0d0b26 100%);
+    linear-gradient(160deg, var(--surface-a) 0%, var(--surface) 45%, var(--surface-b) 100%);
   background-size: 200% 200%;
   animation: fx-shift 16s ease-in-out infinite;
 }

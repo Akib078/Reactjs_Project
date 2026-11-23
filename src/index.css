@@ -1,3 +1,55 @@
+/* ---------- Theme colours ----------
+   Night (dark) is the default. Morning (light) is switched on with
+   <html data-theme="light"> by the toggle in the navbar. */
+:root {
+  --bg: #070b18;
+  --bg-rgb: 7, 11, 24;
+  --surface: #0b1222;
+  --surface-rgb: 11, 18, 34;
+  --surface-2: #0b1020;
+  --surface-a: #0a0e20;
+  --surface-b: #0d0b26;
+  --frame-a: #1c1a44;
+  --frame-b: #0b0d1e;
+  --text: #e8eaf6;
+  --text-2: #dfe2f2;
+  --text-3: #c5c8dc;
+  --muted: #9ca0b8;
+  --muted-2: #7e83a0;
+  --heading: #fff;
+  --ink-rgb: 255, 255, 255; /* hairlines, glass fills, faint text */
+  --shadow-rgb: 0, 0, 0;
+  --shadow-k: 1; /* shadow strength multiplier */
+  --logo-ink: #fff;
+  --name-start: #fff;
+  --role: #ff6b9d;
+  color-scheme: dark;
+}
+html[data-theme="light"] {
+  --bg: #f5f4fd;
+  --bg-rgb: 245, 244, 253;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-2: #f1effc;
+  --surface-a: #fbfaff;
+  --surface-b: #f1eeff;
+  --frame-a: #e6e2ff;
+  --frame-b: #f8f7ff;
+  --text: #1b1d36;
+  --text-2: #2b2e4a;
+  --text-3: #444867;
+  --muted: #5c6080;
+  --muted-2: #767a96;
+  --heading: #14163a;
+  --ink-rgb: 30, 28, 80;
+  --shadow-rgb: 60, 52, 150;
+  --shadow-k: 0.28;
+  --logo-ink: #1b1d36;
+  --name-start: #2a2470;
+  --role: #e0457f;
+  color-scheme: light;
+}
+
 /* Global rules that used to live in header.css — other sections rely on them */
 *,
 *::after,
@@ -20,8 +72,8 @@ a {
 body {
   font-size: 1.6rem;
   margin: 0;
-  background: #070b18;
-  color-scheme: dark;
+  background: var(--bg);
+  color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

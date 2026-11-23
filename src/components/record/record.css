@@ -4,11 +4,11 @@
 .about {
   --accent: #6c63ff;
   overflow-x: clip; /* stop the glow causing sideways scroll, but let it spill upward */
-  --card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
-  --card-border: rgba(255, 255, 255, 0.08);
+  --card-bg: linear-gradient(180deg, rgba(var(--ink-rgb), 0.045), rgba(var(--ink-rgb), 0.015));
+  --card-border: rgba(var(--ink-rgb), 0.08);
   position: relative;
-  background: #070b18;
-  color: #c5c8dc;
+  background: var(--bg);
+  color: var(--text-3);
   padding: 10rem clamp(1.6rem, 5vw, 6rem) 10rem;
   font-family: "Poppins", sans-serif;
 }
@@ -58,7 +58,7 @@
   font-size: clamp(3rem, 4.5vw, 4.2rem);
   font-weight: 600;
   line-height: 1.2;
-  color: #e8eaf6;
+  color: var(--text);
   margin-bottom: 1.6rem;
 }
 .about__title span {
@@ -67,7 +67,7 @@
 .about__summary {
   font-size: 1.6rem;
   line-height: 1.7;
-  color: #9397b0;
+  color: var(--muted);
 }
 
 .about__group {
@@ -76,7 +76,7 @@
   gap: 1rem;
   font-size: 2rem;
   font-weight: 600;
-  color: #e8eaf6;
+  color: var(--text);
   margin: 0 0 2.8rem;
 }
 .about__group i {
@@ -109,8 +109,8 @@
   border-radius: 26px;
   /* softly glowing violet border */
   border: 1px solid rgba(108, 99, 255, 0.38);
-  background: #0b1222;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 18px rgba(108, 99, 255, 0.16),
+  background: var(--surface);
+  box-shadow: 0 25px 50px -12px rgba(var(--shadow-rgb), calc(0.6 * var(--shadow-k))), 0 0 18px rgba(108, 99, 255, 0.16),
     inset 0 0 14px rgba(108, 99, 255, 0.06);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
     box-shadow 0.35s ease;
@@ -118,7 +118,7 @@
 .about-card:hover {
   transform: translateY(-4px);
   border-color: rgba(108, 99, 255, 0.65);
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 28px rgba(108, 99, 255, 0.28),
+  box-shadow: 0 30px 60px -12px rgba(var(--shadow-rgb), calc(0.7 * var(--shadow-k))), 0 0 28px rgba(108, 99, 255, 0.28),
     inset 0 0 18px rgba(108, 99, 255, 0.08);
 }
 .about-card__body {
@@ -158,7 +158,7 @@
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  background: #070b18;
+  background: var(--bg);
   border: 3px solid var(--accent);
   box-shadow: 0 0 0 5px rgba(108, 99, 255, 0.12);
 }
@@ -179,7 +179,7 @@
 .xp__role {
   font-size: 1.9rem;
   font-weight: 600;
-  color: #e8eaf6;
+  color: var(--text);
   line-height: 1.35;
   margin-bottom: 0.3rem;
 }
@@ -189,7 +189,7 @@
   color: var(--accent);
 }
 .xp__place {
-  color: #7e83a0;
+  color: var(--muted-2);
   font-weight: 400;
 }
 
@@ -200,17 +200,17 @@
   gap: 0.7rem;
   font-size: 1.25rem;
   font-weight: 500;
-  color: #d2d5e8;
+  color: var(--text-2);
   white-space: nowrap;
   padding: 0.5rem 1.2rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(var(--ink-rgb), 0.12);
+  background: rgba(var(--shadow-rgb), calc(0.35 * var(--shadow-k)));
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 .pill--live {
-  color: #fff;
+  color: var(--heading);
   border-color: rgba(108, 99, 255, 0.4);
   background: rgba(108, 99, 255, 0.15);
   text-transform: uppercase;
@@ -244,7 +244,7 @@
   padding-left: 1.8rem;
   font-size: 1.45rem;
   line-height: 1.7;
-  color: #a3a7bf;
+  color: var(--muted);
 }
 .xp__points li + li {
   margin-top: 0.6rem;
@@ -279,11 +279,11 @@
   gap: 0.7rem;
   font-size: 1.25rem;
   font-weight: 500;
-  color: #dfe2f2;
+  color: var(--text-2);
   padding: 0.55rem 1.3rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(var(--ink-rgb), 0.05);
+  border: 1px solid rgba(var(--ink-rgb), 0.1);
 }
 
 /* ---------- education cards ---------- */
@@ -304,19 +304,19 @@
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: #c5c8dc;
+  color: var(--text-3);
   margin-bottom: 1.4rem;
 }
 .edu__degree {
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 1.4;
-  color: #e8eaf6;
+  color: var(--text);
   margin-bottom: 0.6rem;
 }
 .edu__school {
   font-size: 1.45rem;
-  color: #a3a7bf;
+  color: var(--muted);
   margin-bottom: 2rem;
 }
 .edu__grade {
@@ -334,7 +334,7 @@
 .edu__grade span {
   font-size: 1.25rem;
   font-weight: 500;
-  color: #7e83a0;
+  color: var(--muted-2);
 }
 
 /* ---------- responsive ---------- */

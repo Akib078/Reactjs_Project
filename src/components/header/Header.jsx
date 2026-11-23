@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./header.css";
 import logo from "../pic/logo.png";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const LINKS = [
   { id: "home", label: "Home" },
@@ -16,6 +17,30 @@ function Header() {
   const [hidden, setHidden] = useState(false);
   const [active, setActive] = useState("home");
   const lastY = useRef(0);
+  // Night (dark) is the default; morning (light) is remembered in localStorage.
+  // public/index.html sets data-theme before React loads, so read it from there.
+  const [theme, setTheme] = useState(
+    () => document.documentElement.dataset.theme || "dark"
+  );
+
+  useEffect(() => {
+    const html = document.documentElement;
+    html.dataset.theme = theme;
+    try {
+      localStorage.setItem("theme", theme);
+    } catch (e) {
+      /* storage blocked: the theme just will not be remembered */
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    // smooth colour fade only while switching (not on every hover)
+    html.classList.add("theme-anim");
+    setTheme((t) => (t === "dark" ? "light" : "dark"));
+    window.setTimeout(() => html.classList.remove("theme-anim"), 500);
+  };
+  const isLight = theme === "light";
 
   // Darker on scroll; hide while scrolling down, show again when scrolling up
   useEffect(() => {
@@ -84,6 +109,22 @@ function Header() {
           ))}
         </ul>
 
+        <div className="navbar-actions">
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={isLight ? "Switch to night mode" : "Switch to morning mode"}
+          title={isLight ? "Night mode" : "Morning mode"}
+        >
+          <span className={`theme-toggle__icon${isLight ? "" : " is-shown"}`} aria-hidden="true">
+            <FiSun />
+          </span>
+          <span className={`theme-toggle__icon${isLight ? " is-shown" : ""}`} aria-hidden="true">
+            <FiMoon />
+          </span>
+        </button>
+
         <button
           type="button"
           className={`navbar-toggle${open ? " is-open" : ""}`}
@@ -98,6 +139,7 @@ function Header() {
             <span></span>
           </span>
         </button>
+        </div>
       </nav>
 
       <div id="mobile-menu" className="mobile-menu">

@@ -4,7 +4,7 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.11) 1px, transparent 1.5px) 0 0 / 28px
+  background: radial-gradient(circle, rgba(var(--ink-rgb), 0.11) 1px, transparent 1.5px) 0 0 / 28px
     28px;
   /* fade the grid out towards the edges of the section */
   -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 30%, transparent 85%);

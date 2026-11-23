@@ -1,6 +1,7 @@
 import React from "react";
 import "./home.css";
 import hero from "../pic/hero-violet.jpg";
+import heroLight from "../pic/hero-light.jpg";
 import cv from "../pic/Akib_Rahman_Resume.pdf";
 import { Typewriter } from "react-simple-typewriter";
 import Aos from "aos";
@@ -32,6 +33,15 @@ const Home = () => {
               width="300"
               height="300"
               fetchpriority="high"
+            />
+            {/* morning-mode version of the photo, shown by CSS when the light theme is on */}
+            <img
+              className="home__photo home__photo--light"
+              src={heroLight}
+              alt=""
+              aria-hidden="true"
+              width="300"
+              height="300"
             />
           </div>
         </div>
