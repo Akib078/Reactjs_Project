@@ -107,8 +107,10 @@
 .cert__frame {
   position: relative;
   display: block;
-  width: 100%;
-  padding: 1rem;
+  width: min(100%, 340px);
+  align-self: center;
+  margin-top: 0.6rem;
+  padding: 0.8rem;
   border: none;
   border-radius: 14px;
   background: linear-gradient(145deg, #2a2618, #15130c);
@@ -142,7 +144,7 @@
 .cert__frame::after {
   content: "";
   position: absolute;
-  inset: 1rem;
+  inset: 0.8rem;
   border-radius: 6px;
   pointer-events: none;
   background: linear-gradient(
@@ -188,8 +190,8 @@
 /* "view full size" hint */
 .cert__zoom {
   position: absolute;
-  right: 2rem;
-  bottom: 2rem;
+  right: 1.4rem;
+  bottom: 1.4rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
