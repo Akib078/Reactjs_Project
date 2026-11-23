@@ -174,25 +174,6 @@
 a.contact__value:hover {
   color: var(--accent);
 }
-.contact__copy {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 9px;
-  border: 1px solid rgba(var(--ink-rgb), 0.1);
-  background: rgba(var(--ink-rgb), 0.04);
-  color: var(--text-3);
-  font-size: 1.6rem;
-  cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-.contact__copy:hover {
-  color: var(--accent);
-  border-color: rgba(108, 99, 255, 0.5);
-  background: rgba(108, 99, 255, 0.08);
-}
 
 /* ---------- form ---------- */
 .contact__form {
@@ -288,7 +269,6 @@ a.contact__value:hover {
   color: var(--muted);
 }
 
-.contact__copy:focus-visible,
 .contact__submit:focus-visible,
 a.contact__value:focus-visible {
   outline: 2px solid var(--accent);

@@ -6,8 +6,6 @@ import {
   TbMapPin,
   TbCalendarCheck,
   TbSend,
-  TbCopy,
-  TbCheck,
 } from "react-icons/tb";
 import DotGrid from "../common/DotGrid";
 import Aos from "aos";
@@ -18,7 +16,7 @@ const EMAIL = "rahman.oion@gmail.com";
 
 const DETAILS = [
   { Icon: TbMapPin, label: "Location", value: "Mohakhali, Dhaka" },
-  { Icon: TbMail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, copy: true },
+  { Icon: TbMail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
   { Icon: TbPhone, label: "Phone", value: "01786101114", href: "tel:+8801786101114" },
   { Icon: TbCalendarCheck, label: "Open Hours", value: "Mon - Sun: 24/7" },
 ];
@@ -27,7 +25,6 @@ const EMPTY = { name: "", email: "", subject: "", message: "" };
 
 const Contact = () => {
   const [form, setForm] = useState(EMPTY);
-  const [copied, setCopied] = useState(false);
   const [sent, setSent] = useState(false);
 
   const update = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -39,16 +36,6 @@ const Contact = () => {
     const body = `${form.message.trim()}\n\n— ${form.name.trim()} (${form.email.trim()})`;
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
-  };
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1800);
-    } catch (err) {
-      window.location.href = `mailto:${EMAIL}`;
-    }
   };
 
   return (
@@ -73,7 +60,7 @@ const Contact = () => {
           {/* left: details */}
           <aside className="contact__info" data-aos="fade-right" data-aos-duration="2200">
             <ul className="contact__list">
-              {DETAILS.map(({ Icon, label, value, href, copy }) => (
+              {DETAILS.map(({ Icon, label, value, href }) => (
                 <li key={label} className="contact__item">
                   <span className="contact__icon" aria-hidden="true">
                     <Icon />
@@ -88,17 +75,6 @@ const Contact = () => {
                       <span className="contact__value">{value}</span>
                     )}
                   </span>
-                  {copy && (
-                    <button
-                      type="button"
-                      className="contact__copy"
-                      onClick={copyEmail}
-                      aria-label={copied ? "Email copied" : "Copy email address"}
-                      title={copied ? "Copied!" : "Copy"}
-                    >
-                      {copied ? <TbCheck /> : <TbCopy />}
-                    </button>
-                  )}
                 </li>
               ))}
             </ul>

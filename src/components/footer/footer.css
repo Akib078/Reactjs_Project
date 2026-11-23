@@ -158,8 +158,10 @@
   border-radius: 50%;
   font-size: 2rem;
   color: var(--text-2);
-  border: 1px solid rgba(var(--ink-rgb), 0.12);
+  /* softly glowing violet border, same as the cards */
+  border: 1px solid rgba(108, 99, 255, 0.45);
   background: rgba(var(--ink-rgb), 0.04);
+  box-shadow: 0 0 14px rgba(108, 99, 255, 0.2), inset 0 0 10px rgba(108, 99, 255, 0.08);
   transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease,
     transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -167,7 +169,7 @@
   color: #fff;
   border-color: transparent;
   background: linear-gradient(135deg, #6c63ff, #00d4ff);
-  box-shadow: 0 8px 22px rgba(108, 99, 255, 0.4);
+  box-shadow: 0 8px 22px rgba(108, 99, 255, 0.4), 0 0 26px rgba(108, 99, 255, 0.35);
   transform: translateY(-3px);
 }
 .footer__where {
