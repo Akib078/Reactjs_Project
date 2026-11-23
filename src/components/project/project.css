@@ -98,7 +98,7 @@
   isolation: isolate;
   display: flex;
   border-radius: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   background: #07070a;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
@@ -106,7 +106,7 @@
 }
 .project-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(245, 193, 4, 0.35);
+  border-color: rgba(245, 193, 4, 0.5);
   box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 193, 4, 0.08);
 }
 
