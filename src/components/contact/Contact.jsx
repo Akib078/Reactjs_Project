@@ -87,6 +87,12 @@ const Contact = () => {
             data-aos="fade-left"
             data-aos-duration="2200"
           >
+            {/* soft decorative background: ripple lines, drifting glow, twinkling sparkles */}
+            <span className="contact__fx" aria-hidden="true">
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <span key={n} className={`contact__sparkle contact__sparkle--${n}`} />
+              ))}
+            </span>
             <div className="contact__row">
               <label className="field">
                 <span className="field__label">Your name</span>
