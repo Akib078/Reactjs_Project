@@ -8,6 +8,7 @@ import {
   TbSend,
 } from "react-icons/tb";
 import DotGrid from "../common/DotGrid";
+import Sparkles from "../common/Sparkles";
 import Aos from "aos";
 import "aos/dist/aos.css";
 Aos.init();
@@ -34,15 +35,6 @@ const CARD_SPARKLES = [
   [[92, 25, 8, "p", -1.4], [70, 74, 6, "v", -0.4], [82, 50, 5, "c", -3.1]],
   [[89, 20, 9, "v", -2.5], [66, 82, 6, "c", -1.0], [96, 64, 7, "v", -3.6]],
 ];
-const Sparkles = ({ list }) =>
-  list.map(([x, y, size, tone, delay], i) => (
-    <span
-      key={i}
-      className={`sparkle sparkle--${tone}`}
-      style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, animationDelay: `${delay}s` }}
-    />
-  ));
-
 const EMPTY = { name: "", email: "", subject: "", message: "" };
 
 const Contact = () => {

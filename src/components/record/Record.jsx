@@ -2,10 +2,17 @@ import React from "react";
 import "./record.css";
 import CardFx from "../common/CardFx";
 import DotGrid from "../common/DotGrid";
-import Bubbles from "../common/Bubbles";
+import Sparkles from "../common/Sparkles";
 import Aos from "aos";
 import "aos/dist/aos.css";
 Aos.init();
+
+// Twinkling stars in each education card: x %, y %, size px, colour, delay s
+const EDU_SPARKLES = [
+  [[88, 12, 10, "v", 0], [70, 30, 6, "c", -1.6], [94, 52, 7, "p", -2.9], [80, 86, 9, "v", -0.9], [56, 92, 6, "c", -3.6], [62, 8, 6, "c", -2.2]],
+  [[90, 16, 8, "c", -0.7], [66, 24, 6, "v", -2.4], [95, 58, 9, "v", -1.3], [76, 82, 7, "p", -3.2], [52, 90, 6, "c", -0.2], [84, 44, 5, "c", -3.9]],
+  [[86, 10, 9, "p", -1.1], [72, 34, 6, "v", -3.0], [93, 50, 8, "c", -0.4], [82, 88, 10, "v", -2.0], [58, 94, 6, "v", -3.5], [64, 14, 6, "c", -1.8]],
+];
 
 // Content taken from Akib_Rahman_Resume.pdf
 const EXPERIENCE = [
@@ -158,7 +165,7 @@ const Record = () => {
               data-aos-duration="900"
               data-aos-delay={i * 120}
             >
-              <Bubbles reverse={i % 2 === 1} />
+              <Sparkles list={EDU_SPARKLES[i % EDU_SPARKLES.length]} layer />
               <div className="about-card__body">
               <span className="edu__date">
                 <span className="dot" aria-hidden="true" />
