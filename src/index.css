@@ -13,14 +13,14 @@ li {
 }
 a {
   text-decoration: none;
-  color: #f5c104;
+  color: #6c63ff;
   font-weight: 500;
 }
 
 body {
   font-size: 1.6rem;
   margin: 0;
-  background: #0d0d12;
+  background: #020409;
   color-scheme: dark;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

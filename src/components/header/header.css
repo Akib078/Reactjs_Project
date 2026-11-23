@@ -1,6 +1,6 @@
 /* Navbar — floating frosted pill (style based on asterot.com), accent kept as site yellow */
 .navbar-shell {
-  --nav-accent: #f5c104;
+  --nav-accent: #6c63ff;
   --nav-gutter: clamp(1rem, 2vw, 3rem);
   position: fixed;
   top: 0;
@@ -27,14 +27,14 @@
   padding: clamp(0.8rem, 1.3vw, 1.05rem) clamp(1.2rem, 2vw, 2rem);
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(13, 13, 18, 0.55);
+  background: rgba(2, 4, 9, 0.55);
   -webkit-backdrop-filter: blur(14px) saturate(150%);
   backdrop-filter: blur(14px) saturate(150%);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .navbar-shell.is-scrolled .navbar-pill {
-  background: rgba(10, 10, 14, 0.72);
+  background: rgba(6, 12, 24, 0.72);
   border-color: rgba(255, 255, 255, 0.12);
   box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5);
 }
@@ -52,7 +52,7 @@
   display: block;
   height: 38px;
   aspect-ratio: 1404 / 304;
-  background: linear-gradient(90deg, #fff 0 36.5%, var(--nav-accent) 36.5% 100%);
+  background: linear-gradient(90deg, #fff 0 36.5%, #6c63ff 36.5%, #00d4ff 100%);
   -webkit-mask: var(--logo-url) center / contain no-repeat;
   mask: var(--logo-url) center / contain no-repeat;
 }
@@ -153,7 +153,7 @@
   padding: 8px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(15, 15, 20, 0.92);
+  background: rgba(6, 12, 24, 0.92);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   backdrop-filter: blur(18px) saturate(150%);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
@@ -175,7 +175,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #c9c9cf;
+  color: #c5c8dc;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }

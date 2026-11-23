@@ -5,7 +5,7 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: #0d0d12;
+  background: #020409;
   width: 100%;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
   height: 220px;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(13, 13, 18, 0) 0%, #0d0d12 85%);
+  background: linear-gradient(180deg, rgba(2, 4, 9, 0) 0%, #020409 85%);
 }
 
 /* Yellow glows — echo the old yellow blobs, but soft on dark */
@@ -43,7 +43,7 @@
   max-height: 560px;
   top: -18%;
   left: -14%;
-  background: #f5c104;
+  background: #6c63ff;
 }
 .home__glow--right {
   width: 34vw;
@@ -52,7 +52,7 @@
   max-height: 460px;
   bottom: 10%;
   right: -12%;
-  background: #f5a704;
+  background: #00d4ff;
   opacity: 0.22;
   animation-delay: -7s;
 }
@@ -94,7 +94,7 @@
   inset: 0;
   border-radius: 50%;
   padding: 2px;
-  background: conic-gradient(from var(--ring-angle), #f5c104, rgba(245, 193, 4, 0) 30%, rgba(245, 193, 4, 0) 55%, #f5c104 85%, #f5c104);
+  background: conic-gradient(from var(--ring-angle), #6c63ff, rgba(108, 99, 255, 0) 30%, rgba(108, 99, 255, 0) 55%, #6c63ff 85%, #6c63ff);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
@@ -107,7 +107,7 @@
   inset: 10px;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 42%, rgba(13, 13, 18, 0) 48%, rgba(13, 13, 18, 0.55) 72%, rgba(13, 13, 18, 0.85) 100%);
+  background: radial-gradient(circle at 50% 42%, rgba(2, 4, 9, 0) 48%, rgba(2, 4, 9, 0.55) 72%, rgba(2, 4, 9, 0.85) 100%);
 }
 .home__photo {
   display: block;
@@ -127,7 +127,7 @@
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  background: #15151c;
+  background: #0b1020;
 }
 @property --ring-angle {
   syntax: "<angle>";
@@ -168,16 +168,23 @@
 .home__bubble {
   position: absolute;
   border-radius: 50%;
-  background: #f5c104;
+  background: #6c63ff;
   opacity: 0.85;
   animation: home__bubble 7s ease-in-out infinite;
+}
+.home__bubble--3,
+.home__bubble--6 {
+  background: #00d4ff;
+}
+.home__bubble--4 {
+  background: #ff6b9d;
 }
 /* outlined bubbles */
 .home__bubble--2,
 .home__bubble--5,
 .home__bubble--7 {
   background: transparent;
-  border: 2px solid rgba(245, 193, 4, 0.75);
+  border: 2px solid rgba(108, 99, 255, 0.75);
 }
 .home__bubble--1 { width: 16px; height: 16px; top: 6%;  left: 10%; animation-duration: 6s; }
 .home__bubble--2 { width: 26px; height: 26px; top: 0;   right: 14%; animation-duration: 8s; animation-delay: -2s; }
@@ -217,24 +224,27 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   margin-bottom: 1.2rem;
-  color: #f4f4f6;
+  color: #e8eaf6;
 }
 .home__name {
-  color: #f5c104;
+  background: linear-gradient(135deg, #fff 0%, #6c63ff 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Typewriter line: fixed height so the text below doesn't jump while it types */
 .home__role {
   min-height: 1.2em;
   font-size: 3.4rem;
-  color: #c9c9cf;
+  color: #c5c8dc;
 }
 .home__role span {
-  color: #f5c104;
+  color: #ff6b9d;
 }
 
 .home__subtitle {
-  color: #9a9aa3;
+  color: #9397b0;
   font-size: 1.6rem;
   line-height: 1.6;
   margin-bottom: 3rem;
@@ -248,11 +258,11 @@
 
 .home__button {
   display: inline-block;
-  background: linear-gradient(87deg, #f5c104 9%, #ffce1c 50%, #ffcd1b 100%);
+  background: linear-gradient(135deg, #6c63ff 0%, #00d4ff 100%);
   padding: 0.85em 2em;
   border: 1px solid transparent;
   border-radius: 50px;
-  color: #15151c;
+  color: #fff;
   font-weight: 700;
   font-size: 1.5rem;
   text-align: center;
@@ -260,24 +270,24 @@
     box-shadow 0.25s ease, transform 0.25s ease;
 }
 .home__button:hover {
-  background: #fff;
-  color: #15151c;
-  box-shadow: 0 8px 24px rgba(245, 193, 4, 0.3);
+  background: linear-gradient(135deg, #7d75ff 0%, #2bdcff 100%);
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(108, 99, 255, 0.45);
   transform: translateY(-2px);
 }
 .home__button--ghost {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.18);
-  color: #f4f4f6;
+  color: #e8eaf6;
 }
 .home__button--ghost:hover {
-  background: rgba(245, 193, 4, 0.1);
-  border-color: #f5c104;
-  color: #f5c104;
+  background: rgba(108, 99, 255, 0.1);
+  border-color: #6c63ff;
+  color: #6c63ff;
   box-shadow: none;
 }
 .home__button:focus-visible {
-  outline: 2px solid #f5c104;
+  outline: 2px solid #6c63ff;
   outline-offset: 3px;
 }
 

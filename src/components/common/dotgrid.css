@@ -11,11 +11,11 @@
   mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 30%, transparent 85%);
 }
 
-/* yellow dots that light up around the mouse */
+/* accent dots that light up around the mouse */
 .dotgrid__lit {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, #f5c104 1.4px, transparent 2px) 0 0 / 28px 28px;
+  background: radial-gradient(circle, #6c63ff 1.4px, transparent 2px) 0 0 / 28px 28px;
   -webkit-mask-image: radial-gradient(
     220px circle at var(--px, -999px) var(--py, -999px),
     #000,

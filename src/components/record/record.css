@@ -2,13 +2,13 @@
    Note: html font-size is 62.5%, so 1rem = 10px. */
 
 .about {
-  --accent: #f5c104;
+  --accent: #6c63ff;
   overflow-x: clip; /* stop the glow causing sideways scroll, but let it spill upward */
   --card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
   --card-border: rgba(255, 255, 255, 0.08);
   position: relative;
-  background: #0d0d12;
-  color: #c9c9cf;
+  background: #020409;
+  color: #c5c8dc;
   padding: 10rem clamp(1.6rem, 5vw, 6rem) 10rem;
   font-family: "Poppins", sans-serif;
 }
@@ -23,7 +23,7 @@
   max-width: 520px;
   height: 420px;
   border-radius: 50%;
-  background: rgba(245, 167, 4, 0.1);
+  background: rgba(0, 212, 255, 0.1);
   filter: blur(100px);
   pointer-events: none;
 }
@@ -49,16 +49,16 @@
   text-transform: uppercase;
   color: var(--accent);
   padding: 0.5rem 1.4rem;
-  border: 1px solid rgba(245, 193, 4, 0.3);
+  border: 1px solid rgba(108, 99, 255, 0.3);
   border-radius: 999px;
-  background: rgba(245, 193, 4, 0.06);
+  background: rgba(108, 99, 255, 0.06);
   margin-bottom: 1.6rem;
 }
 .about__title {
   font-size: clamp(3rem, 4.5vw, 4.2rem);
   font-weight: 600;
   line-height: 1.2;
-  color: #f4f4f6;
+  color: #e8eaf6;
   margin-bottom: 1.6rem;
 }
 .about__title span {
@@ -67,7 +67,7 @@
 .about__summary {
   font-size: 1.6rem;
   line-height: 1.7;
-  color: #9a9aa3;
+  color: #9397b0;
 }
 
 .about__group {
@@ -76,7 +76,7 @@
   gap: 1rem;
   font-size: 2rem;
   font-weight: 600;
-  color: #f4f4f6;
+  color: #e8eaf6;
   margin: 0 0 2.8rem;
 }
 .about__group i {
@@ -86,7 +86,7 @@
   height: 3.8rem;
   border-radius: 12px;
   font-size: 1.7rem;
-  color: #15151c;
+  color: #fff;
   background: var(--accent);
 }
 
@@ -98,7 +98,7 @@
   height: 0.6rem;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 8px rgba(245, 193, 4, 0.6);
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.6);
 }
 
 /* ---------- shared card look (asterot "featured" style, in yellow) ---------- */
@@ -108,15 +108,15 @@
   isolation: isolate;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #07070a;
+  background: #060c18;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
     box-shadow 0.35s ease;
 }
 .about-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(245, 193, 4, 0.35);
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(245, 193, 4, 0.08);
+  border-color: rgba(108, 99, 255, 0.35);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(108, 99, 255, 0.08);
 }
 .about-card__body {
   position: relative;
@@ -138,7 +138,7 @@
   top: 1rem;
   bottom: 1rem;
   width: 2px;
-  background: linear-gradient(180deg, var(--accent), rgba(245, 193, 4, 0.08));
+  background: linear-gradient(180deg, var(--accent), rgba(108, 99, 255, 0.08));
   border-radius: 2px;
 }
 .xp__item {
@@ -155,9 +155,9 @@
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  background: #0d0d12;
+  background: #020409;
   border: 3px solid var(--accent);
-  box-shadow: 0 0 0 5px rgba(245, 193, 4, 0.12);
+  box-shadow: 0 0 0 5px rgba(108, 99, 255, 0.12);
 }
 .xp__dot--live {
   background: var(--accent);
@@ -176,7 +176,7 @@
 .xp__role {
   font-size: 1.9rem;
   font-weight: 600;
-  color: #f4f4f6;
+  color: #e8eaf6;
   line-height: 1.35;
   margin-bottom: 0.3rem;
 }
@@ -186,7 +186,7 @@
   color: var(--accent);
 }
 .xp__place {
-  color: #8a8a93;
+  color: #7e83a0;
   font-weight: 400;
 }
 
@@ -197,7 +197,7 @@
   gap: 0.7rem;
   font-size: 1.25rem;
   font-weight: 500;
-  color: #d6d6db;
+  color: #d2d5e8;
   white-space: nowrap;
   padding: 0.5rem 1.2rem;
   border-radius: 999px;
@@ -208,8 +208,8 @@
 }
 .pill--live {
   color: #fff;
-  border-color: rgba(245, 193, 4, 0.4);
-  background: rgba(245, 193, 4, 0.15);
+  border-color: rgba(108, 99, 255, 0.4);
+  background: rgba(108, 99, 255, 0.15);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 1.15rem;
@@ -224,10 +224,10 @@
 }
 @keyframes about__pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(245, 193, 4, 0.6);
+    box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.6);
   }
   100% {
-    box-shadow: 0 0 0 8px rgba(245, 193, 4, 0);
+    box-shadow: 0 0 0 8px rgba(108, 99, 255, 0);
   }
 }
 
@@ -241,7 +241,7 @@
   padding-left: 1.8rem;
   font-size: 1.45rem;
   line-height: 1.7;
-  color: #a9a9b2;
+  color: #a3a7bf;
 }
 .xp__points li + li {
   margin-top: 0.6rem;
@@ -276,7 +276,7 @@
   gap: 0.7rem;
   font-size: 1.25rem;
   font-weight: 500;
-  color: #e2e2e6;
+  color: #dfe2f2;
   padding: 0.55rem 1.3rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.05);
@@ -301,19 +301,19 @@
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: #c9c9cf;
+  color: #c5c8dc;
   margin-bottom: 1.4rem;
 }
 .edu__degree {
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 1.4;
-  color: #f4f4f6;
+  color: #e8eaf6;
   margin-bottom: 0.6rem;
 }
 .edu__school {
   font-size: 1.45rem;
-  color: #a9a9b2;
+  color: #a3a7bf;
   margin-bottom: 2rem;
 }
 .edu__grade {
@@ -325,13 +325,13 @@
   color: var(--accent);
   padding: 0.6rem 1.3rem;
   border-radius: 10px;
-  background: rgba(245, 193, 4, 0.12);
-  border: 1px solid rgba(245, 193, 4, 0.35);
+  background: rgba(108, 99, 255, 0.12);
+  border: 1px solid rgba(108, 99, 255, 0.35);
 }
 .edu__grade span {
   font-size: 1.25rem;
   font-weight: 500;
-  color: #8a8a93;
+  color: #7e83a0;
 }
 
 /* ---------- responsive ---------- */
