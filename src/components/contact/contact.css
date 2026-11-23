@@ -279,7 +279,6 @@ a.contact__value:focus-visible {
 .contact__form {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
   border-radius: 0 21px 21px 0;
 }
 .contact__form > :not(.contact__fx) {
@@ -290,6 +289,8 @@ a.contact__value:focus-visible {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
   pointer-events: none;
 }
 /* thin curved lines rippling out from the bottom-right corner */
@@ -359,7 +360,7 @@ a.contact__value:focus-visible {
   50% { opacity: 0.55; transform: scale(1) rotate(45deg); }
 }
 
-/* ---------- envelope + paper plane illustration (bottom-right of the form) ---------- */
+/* ---------- envelope + paper plane outline drawing (bottom-right of the form) ---------- */
 .contact__form > .mailfx {
   position: absolute;
   right: 1.2rem;
@@ -367,74 +368,34 @@ a.contact__value:focus-visible {
   z-index: 2;
   width: 190px;
   height: auto;
-  overflow: visible;
+  overflow: visible; /* the plane pokes out past the form edge */
   pointer-events: none;
 }
 .contact__actions {
   padding-right: 190px;
 }
-.mailfx__trail {
+.mailfx__trail,
+.mailfx__line,
+.mailfx__plane {
   fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mailfx__trail {
   stroke: rgba(108, 99, 255, 0.55);
-  stroke-width: 1.6;
-  stroke-linecap: round;
+  stroke-width: 1.5;
   stroke-dasharray: 4 6;
-  animation: mailfx__dash 1.6s linear infinite;
 }
-.mailfx__back {
-  fill: #4f47d6;
+.mailfx__line {
+  stroke: rgba(108, 99, 255, 0.8);
+  stroke-width: 2;
 }
-.mailfx__paper {
-  fill: var(--surface);
-  stroke: rgba(108, 99, 255, 0.35);
-  stroke-width: 1;
+.mailfx__line--soft {
+  stroke: rgba(0, 190, 240, 0.7);
 }
-.mailfx__ln {
-  stroke: rgba(0, 180, 230, 0.55);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-}
-.mailfx__ln--soft {
-  stroke: rgba(108, 99, 255, 0.35);
-}
-.mailfx__side {
-  fill: #6c63ff;
-}
-.mailfx__front {
-  fill: url(#mailfx-front);
-}
-.mailfx__fold {
-  fill: #b9b4ff;
-}
-.mailfx__fold--dark {
-  fill: #5a52e0;
-}
-.mailfx__letter {
-  animation: mailfx__letter 3.2s ease-in-out infinite;
-}
-.mailfx__plane-wrap {
-  animation: mailfx__float 3.6s ease-in-out infinite;
-}
-/* after "Send message": the plane zooms off and glides back in */
-.mailfx.is-sent .mailfx__plane-wrap {
-  animation: mailfx__fly 2.4s cubic-bezier(0.5, 0, 0.3, 1) 1, mailfx__float 3.6s ease-in-out 2.4s infinite;
-}
-@keyframes mailfx__dash {
-  to { stroke-dashoffset: -20; }
-}
-@keyframes mailfx__letter {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-@keyframes mailfx__float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(-3px, -6px) rotate(-3deg); }
-}
-@keyframes mailfx__fly {
-  0% { transform: translate(0, 0); opacity: 1; }
-  40% { transform: translate(140px, -90px); opacity: 0; }
-  41% { transform: translate(-60px, 40px); opacity: 0; }
-  100% { transform: translate(0, 0); opacity: 1; }
+.mailfx__plane {
+  stroke: #00c2ee;
+  stroke-width: 1.1; /* drawn at 2x, so this shows as ~2px */
 }
 
 /* ---------- responsive ---------- */
@@ -482,12 +443,6 @@ a.contact__value:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .contact__fx::before,
   .contact__fx::after {
-    animation: none;
-  }
-  .mailfx__trail,
-  .mailfx__letter,
-  .mailfx__plane-wrap,
-  .mailfx.is-sent .mailfx__plane-wrap {
     animation: none;
   }
   .sparkle {
