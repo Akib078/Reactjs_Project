@@ -382,19 +382,19 @@ a.contact__value:focus-visible {
   stroke-linejoin: round;
 }
 .mailfx__trail {
-  stroke: rgba(108, 99, 255, 0.55);
+  stroke: rgba(0, 194, 238, 0.28);
   stroke-width: 1.5;
   stroke-dasharray: 4 6;
 }
 .mailfx__line {
-  stroke: rgba(108, 99, 255, 0.8);
+  stroke: rgba(0, 194, 238, 0.4);
   stroke-width: 2;
 }
 .mailfx__line--soft {
-  stroke: rgba(0, 190, 240, 0.7);
+  stroke: rgba(0, 194, 238, 0.35);
 }
 .mailfx__plane {
-  stroke: #00c2ee;
+  stroke: rgba(0, 194, 238, 0.5);
   stroke-width: 1.1; /* drawn at 2x, so this shows as ~2px */
 }
 
