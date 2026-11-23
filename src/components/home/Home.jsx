@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import hero from "../pic/hero.jpg";
+import hero from "../pic/hero-violet.jpg";
 import cv from "../pic/Akib_Rahman_Resume.pdf";
 import { Typewriter } from "react-simple-typewriter";
 import Aos from "aos";
