@@ -127,6 +127,17 @@
   background: transparent;
   border: 2px solid rgba(108, 99, 255, 0.7);
 }
+/* colour variety, same mix as the bubbles around the Home photo */
+.cert__bubble--3,
+.cert__bubble--6 {
+  background: #00d4ff;
+}
+.cert__bubble--4 {
+  background: #ff6b9d;
+}
+.cert__bubble--5 {
+  border-color: rgba(0, 212, 255, 0.7);
+}
 .cert__bubble--1 { width: 14px; height: 14px; top: 8%;  left: 7%;  animation-duration: 6s; }
 .cert__bubble--2 { width: 24px; height: 24px; top: 5%;  right: 9%; animation-duration: 8s; animation-delay: -2s; }
 .cert__bubble--3 { width: 8px;  height: 8px;  top: 44%; right: 5%; animation-duration: 5s; animation-delay: -1s; opacity: 0.55; }
