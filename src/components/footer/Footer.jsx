@@ -26,7 +26,7 @@ const SOCIALS = [
   { name: "GitHub", Icon: TbBrandGithub, href: "https://github.com/Akib078" },
   { name: "Facebook", Icon: TbBrandFacebook, href: "https://www.facebook.com/akibrahman.oion" },
   { name: "Instagram", Icon: TbBrandInstagram, href: "https://www.instagram.com/akkiibbb/" },
-  { name: "Email", Icon: TbMail, href: "mailto:rahman.oion@gmail.com" },
+  { name: "Email", Icon: TbMail, href: "mailto:rahmanakib03@gmail.com" },
 ];
 
 const Footer = () => {

@@ -12,12 +12,12 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 Aos.init();
 
-const EMAIL = "rahman.oion@gmail.com";
+const EMAIL = "rahmanakib03@gmail.com";
 
 const DETAILS = [
   { Icon: TbMapPin, label: "Location", value: "Mohakhali, Dhaka" },
   { Icon: TbMail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
-  { Icon: TbPhone, label: "Phone", value: "01786101114", href: "tel:+8801786101114" },
+  { Icon: TbPhone, label: "Phone", value: "01534363363", href: "tel:+8801534363363" },
   { Icon: TbCalendarCheck, label: "Open Hours", value: "Mon - Sun: 24/7" },
 ];
 
