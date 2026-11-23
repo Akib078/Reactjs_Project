@@ -122,7 +122,7 @@ const Contact = () => {
             <svg className="mailfx" viewBox="0 0 220 150" aria-hidden="true" focusable="false">
               <path
                 className="mailfx__trail"
-                d="M62 100 C14 96 12 30 62 26 C104 22 120 62 156 54 C176 50 188 50 202 50"
+                d="M62 100 C14 96 12 30 62 26 C104 22 120 62 156 54 C174 50 186 48 198 47"
               />
 
               {/* letter: only the part above the envelope opening is drawn */}
@@ -135,9 +135,9 @@ const Contact = () => {
               <path className="mailfx__line" d="M56 88 H44 V142 H132 V88 H120" />
               <path className="mailfx__line" d="M44 92 L80 116 M132 92 L96 116 M44 142 L88 110 L132 142" />
 
-              {/* paper plane (2x) */}
-              <g transform="translate(204 34) rotate(-14) scale(2)">
-                <path className="mailfx__plane" d="M0 8 L30 -6 L12 12 Z M12 12 L30 -6 L16 20 Z M12 12 L10 18" />
+              {/* paper plane: symmetric wings, sits half outside the form */}
+              <g transform="translate(196 46) rotate(-14) scale(2.4)">
+                <path className="mailfx__plane" d="M32 0 L0 -12 L8 0 L0 12 Z M32 0 L8 0" />
               </g>
             </svg>
             <div className="contact__row">
