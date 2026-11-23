@@ -2,6 +2,7 @@ import React from "react";
 import "./record.css";
 import CardFx from "../common/CardFx";
 import DotGrid from "../common/DotGrid";
+import Bubbles from "../common/Bubbles";
 import Aos from "aos";
 import "aos/dist/aos.css";
 Aos.init();
@@ -112,6 +113,7 @@ const Record = () => {
               <span className={`xp__dot${job.current ? " xp__dot--live" : ""}`} aria-hidden="true" />
               <article className="about-card xp__card">
                 <CardFx seed={idx} count={10} />
+                <Bubbles reverse={idx % 2 === 1} />
                 <div className="about-card__body">
                 <div className="xp__top">
                   <div>
