@@ -7,6 +7,7 @@ import Service from './components/service/Service';
 import Footer from './components/footer/Footer';
 import Contact from './components/contact/Contact';
 import Project from './components/project/Project';
+import Certifications from './components/certifications/Certifications';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       </main>
       <Record></Record>
       <Service></Service>
+      <Certifications></Certifications>
       <Project></Project>
      
       <Contact></Contact>
