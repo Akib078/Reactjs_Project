@@ -4,13 +4,10 @@ import {
   TbMail,
   TbPhone,
   TbMapPin,
-  TbBrandLinkedin,
-  TbBrandGithub,
-  TbBrandWhatsapp,
+  TbCalendarCheck,
   TbSend,
   TbCopy,
   TbCheck,
-  TbArrowUpRight,
 } from "react-icons/tb";
 import DotGrid from "../common/DotGrid";
 import Aos from "aos";
@@ -20,15 +17,10 @@ Aos.init();
 const EMAIL = "rahman.oion@gmail.com";
 
 const DETAILS = [
+  { Icon: TbMapPin, label: "Location", value: "Mohakhali, Dhaka" },
   { Icon: TbMail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, copy: true },
-  { Icon: TbPhone, label: "Phone", value: "+880 1786-101114", href: "tel:+8801786101114" },
-  { Icon: TbMapPin, label: "Location", value: "Mohakhali, Dhaka, Bangladesh" },
-];
-
-const SOCIALS = [
-  { name: "LinkedIn", Icon: TbBrandLinkedin, href: "https://www.linkedin.com/in/akib-rahman-6748b4220/" },
-  { name: "GitHub", Icon: TbBrandGithub, href: "https://github.com/Akib078" },
-  { name: "WhatsApp", Icon: TbBrandWhatsapp, href: "https://wa.me/8801786101114" },
+  { Icon: TbPhone, label: "Phone", value: "01786101114", href: "tel:+8801786101114" },
+  { Icon: TbCalendarCheck, label: "Open Hours", value: "Mon - Sun: 24/7" },
 ];
 
 const EMPTY = { name: "", email: "", subject: "", message: "" };
@@ -77,14 +69,9 @@ const Contact = () => {
           </p>
         </header>
 
-        <div className="contact__grid">
+        <div className="contact__box">
           {/* left: details */}
-          <aside className="contact__card contact__info" data-aos="fade-up" data-aos-duration="1000">
-            <span className="contact__status">
-              <span className="contact__pulse" aria-hidden="true" />
-              Available for new opportunities
-            </span>
-
+          <aside className="contact__info" data-aos="fade-right" data-aos-duration="2200">
             <ul className="contact__list">
               {DETAILS.map(({ Icon, label, value, href, copy }) => (
                 <li key={label} className="contact__item">
@@ -115,34 +102,14 @@ const Contact = () => {
                 </li>
               ))}
             </ul>
-
-            <div className="contact__socials">
-              <span className="contact__label">Find me on</span>
-              <div className="contact__social-row">
-                {SOCIALS.map(({ name, Icon, href }) => (
-                  <a
-                    key={name}
-                    className="contact__social"
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon aria-hidden="true" />
-                    {name}
-                    <TbArrowUpRight className="contact__social-arrow" aria-hidden="true" />
-                  </a>
-                ))}
-              </div>
-            </div>
           </aside>
 
           {/* right: message form */}
           <form
-            className="contact__card contact__form"
+            className="contact__form"
             onSubmit={submit}
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="120"
+            data-aos="fade-left"
+            data-aos-duration="2200"
           >
             <div className="contact__row">
               <label className="field">
